@@ -1,0 +1,2 @@
+class MediaLink < ApplicationRecord
+end
