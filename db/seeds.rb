@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+paris = User.create(name: 'paris', email:'paris@gmail.com', password: 'codeplatoon')
+
+4.times do
+
+  Pet.create(breed: Faker::ElderScrolls.creature, name: Faker::Simpsons.character, user_id: paris.id)
+
+end

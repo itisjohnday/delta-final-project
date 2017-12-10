@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20171209180521) do
   create_table "pets", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
-    t.string "species"
     t.string "breed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
