@@ -36,10 +36,16 @@ gem 'jbuilder', '~> 2.5'
 #authentication
 gem 'devise'
 
+gem 'faraday'
+gem 'faraday_middleware'
+
+gem 'json'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :development do
