@@ -1,8 +1,13 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :set_pet, except: [:index, :new, :create]
 
 
   def index
+    @pets = Pet.all
+  end
+
+  def show
 
   end
 
@@ -11,7 +16,6 @@ class PetsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @pet = Pet.new(pet_params)
     @pet.user_id = current_user.id
     
@@ -22,8 +26,28 @@ class PetsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @pet.update(pet_params)
+      redirect_to pets_path, notice: 'pet was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @pet.destroy
+    redirect_to pets_path, notice: 'pet was successfully removed.'
+  end
+
   private
   def pet_params  
     params['pet'].permit(:name, :breed)
+  end
+
+  def set_pet
+    @pet = Pet.find(params[:id])
   end
 end

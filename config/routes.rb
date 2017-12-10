@@ -8,4 +8,8 @@ Rails.application.routes.draw do
 
   resources :pets
 
+  resources :users do
+    resources :media_links
+  end
+
 end
