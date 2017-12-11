@@ -42,6 +42,7 @@ gem 'faker'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'json'
+gem 'aws-sdk'
 
 
 group :development, :test do
