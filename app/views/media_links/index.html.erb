@@ -1,0 +1,35 @@
+<div class='page-header'>
+  <h1>Current Pets</h1>
+</div>
+
+<table class='table table-striped table-hover'>
+  <thead>
+    <tr>
+      <th>user</th>
+      <th>link</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= @user.name %></td>
+        <td><%= link.link %></td>
+        <td><%= link_to 'Edit', edit_user_media_link_path(id: @user.id) %> | 
+            <%= link_to 'Destroy', user_media_link_path(id: @user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+    <td>
+      <%= link_to 'New link', new_user_media_link_path, class: 'btn btn-primary' %>
+      <%= link_to 'return to pet list', user_media_links_path, class: 'btn btn-primary' %>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
