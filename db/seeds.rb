@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-paris = User.create(name: 'paris', email:'paris@gmail.com', password: 'codeplatoon')
+paris = User.create(f_name: 'Paris', l_name: 'Hilton', username: 'philton', email:'paris@gmail.com', password: 'codeplatoon')
 
 4.times do
 
@@ -17,6 +17,3 @@ paris = User.create(name: 'paris', email:'paris@gmail.com', password: 'codeplato
   PetsMediaLink.create(pet_id: new_pet.id, media_link_id: new_link.id)
 
 end
-
-
-
