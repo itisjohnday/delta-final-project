@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/user_pets', to: 'user_profile#user_pets'
   get '/user_info', to: 'user_profile#user_info'
 
-  root to: "about#show"
+  root to: "about#index"
 
   resources :pets
 

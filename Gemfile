@@ -42,7 +42,7 @@ gem 'faker'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'json'
-gem 'aws-sdk'
+gem 'aws-sdk-s3'
 
 gem 'jquery-rails'
 gem 'sprockets-rails'

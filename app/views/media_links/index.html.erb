@@ -13,7 +13,7 @@
   <tbody>
     <% @links.each do |link| %>
       <tr>
-        <td><%= @user.name %></td>
+        <td><%= @user.f_name %></td>
         <td><%= link.link %></td>
         <td><%= link_to 'Edit', edit_user_media_link_path(id: @user.id) %> | 
             <%= link_to 'Destroy', user_media_link_path(id: @user.id), method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -1,6 +1,10 @@
-AWS.config(
-  :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-  :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-)
+credentials = Aws::Credentials.new(Rails.application.secrets.aws_access_key_id, Rails.application.secrets.aws_secret_access_key)
 
-S3_BUCKET =  AWS::S3.new.buckets[ENV['S3_BUCKET']]
+Aws.config.update({
+  region: 'us-east-1',
+  credentials: credentials
+})
+
+client = Aws::S3::Client.new
+resource = Aws::S3::Resource.new(client: client)
+DELTA_BUCKET = resource.bucket(Rails.application.secrets.s3_bucket)
