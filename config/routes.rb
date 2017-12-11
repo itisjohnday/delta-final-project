@@ -3,13 +3,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   get "/about" => "about#show"
+  get "/about" => "about#index"
   get "/find_pets" => "find_pets#show"
 
   get "/user_profile", to: 'user_profile#index'
   get '/user_pets', to: 'user_profile#user_pets'
   get '/user_info', to: 'user_profile#user_info'
 
-  root to: "about#show"
+  root to: "about#index"
 
   resources :pets
 
