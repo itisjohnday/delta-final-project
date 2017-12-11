@@ -22,14 +22,10 @@
         </td>
       </tr>
     <% end %>
-    <tr>
-    <td>
-      <%= link_to 'New pet', pets_path, class: 'btn btn-primary' %>
-      <%= link_to 'return to pet list', pets_path, class: 'btn btn-primary' %>
 
-      </td>
-    </tr>
   </tbody>
 </table>
+
+<%= link_to 'New pet', new_pet_path, class: 'btn btn-primary' %>
 
 <br>
