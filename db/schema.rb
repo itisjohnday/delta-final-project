@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209170240) do
+ActiveRecord::Schema.define(version: 20171210231017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "media_links", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "link"
+    t.string "link_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_media_links_on_user_id"
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name", null: false
+    t.string "breed", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "pets_media_links", force: :cascade do |t|
+    t.bigint "media_link_id"
+    t.bigint "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["media_link_id"], name: "index_pets_media_links_on_media_link_id"
+    t.index ["pet_id"], name: "index_pets_media_links_on_pet_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false

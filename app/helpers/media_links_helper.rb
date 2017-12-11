@@ -1,0 +1,2 @@
+module MediaLinksHelper
+end

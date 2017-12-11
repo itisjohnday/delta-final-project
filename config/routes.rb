@@ -6,4 +6,10 @@ Rails.application.routes.draw do
 
   root to: "about#show"
 
+  resources :pets
+
+  resources :users do
+    resources :media_links
+  end
+
 end
