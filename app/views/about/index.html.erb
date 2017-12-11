@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+
+</head>
+<body>
+  <header class="v-header container">
+    <div class="fullscreen-video-wrap">
+     
+      <%= video_tag "doggy_resize.mp4",  :controls => false, :autoplay => true, :loop => true %>
+      </video>
+    </div>
+
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <h1 style="color:#D0D0D0;">Pet Battle</h1><br>
+
+      <p style="color:white;"> Do you have any cute puppies? Do you want to win some awards? Let's battle your pet with others to see who got the cutest one !  </p>
+      
+      <%= link_to 'Start', about_path, class: 'btn' %>
+     
+    </div>
+
+  </header>
+</body>
+</html>
+
+
+
+      
