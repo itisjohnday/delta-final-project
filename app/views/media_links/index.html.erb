@@ -13,19 +13,23 @@
   <tbody>
     <% @links.each do |link| %>
       <tr>
-        <td><%= @user.f_name %></td>
-        <td><%= link.link %></td>
-        <td><%= link_to 'Edit', edit_user_media_link_path(id: @user.id) %> | 
-            <%= link_to 'Destroy', user_media_link_path(id: @user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+        <td> 
+          <% if link.link_type.match? (/^image/) %>
+            <img src=<%= link.link %> \>
+          <% else %>
+            <video width="320" height="240" controls>
+              <source src=<%= link.link %> type= <%= link.link_type %> >
+            </video>
+          <% end %>
 
         </td>
+        
       </tr>
     <% end %>
     <tr>
     <td>
-      <%= link_to 'New link', new_user_media_link_path, class: 'btn btn-primary' %>
-      <%= link_to 'return to pet list', user_media_links_path, class: 'btn btn-primary' %>
+      <%= link_to 'New link', new_user_media_link_path(user_id: 1), class: 'btn btn-primary' %>
+      <%= link_to 'return to pet list', user_media_links_path(user_id: 1), class: 'btn btn-primary' %>
 
       </td>
     </tr>

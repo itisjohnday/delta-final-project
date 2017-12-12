@@ -1,13 +1,14 @@
 class MediaLinksController < ApplicationController
   # before_action :authenticate_user!, except: [:index]
-  before_action :set_user
+  # before_action :set_user
 
   def index
-    @links = MediaLink.where(user_id: @user.id)
+    # @links = MediaLink.where(user_id: @user.id)
+    @links = MediaLink.all
   end
 
   def show
-
+    @links = MediaLink.where(user_id: @user.id)
   end
 
   def new
@@ -20,22 +21,20 @@ class MediaLinksController < ApplicationController
     # obj = .objects[params[:file].original_filename] 
 
     # Upload the file
-    test = DELTA_BUCKET.object(params[:file].original_filename).upload_file(params[:file].to_io)
+    obj = DELTA_BUCKET.object(params[:file].original_filename)
+    obj.upload_file(params[:file].to_io, options = {acl: 'public-read'})
     binding.pry
     # Create an object for the upload
-      # @upload = MediaLink.new(
-      #     url: obj.public_url,
-      # name: obj.key
+    upload = MediaLink.new(user_id: current_user.id, link: obj.public_url, link_type: params[:file].content_type)
       # #   )
 
     # Save the upload
-    # if @upload.save
-    #   redirect_to uploads_path, success: 'File successfully uploaded'
-    # else
-    #   flash.now[:notice] = 'There was an error'
-    #   render :new
-    # end
-    render :show
+    if upload.save
+      redirect_to user_media_links_path(user_id: 1), success: 'File successfully uploaded'
+    else
+      flash.now[:notice] = 'There was an error'
+      render :new
+    end
   end
 
   def edit

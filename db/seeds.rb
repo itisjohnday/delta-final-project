@@ -14,7 +14,7 @@ deja = User.create(f_name: 'Deja', l_name: 'B', username: 'dbaker', email:'deja@
 
   new_pet = Pet.create(breed: Faker::ElderScrolls.creature, name: Faker::Simpsons.character, user_id: paris.id)
 
-  new_link = MediaLink.create(user_id: paris.id, link: "some random link", link_type:['video','image'].sample())
+  new_link = MediaLink.create(user_id: paris.id, link: Faker::Avatar.image, link_type:'image/png')
 
   PetsMediaLink.create(pet_id: new_pet.id, media_link_id: new_link.id)
 
@@ -23,6 +23,6 @@ end
 
 new_pet = Pet.create(breed: Faker::ElderScrolls.creature, name: Faker::Simpsons.character, user_id: deja.id)
 
-new_link = MediaLink.create(user_id: paris.id, link: "some random link", link_type:['video','image'].sample())
+new_link = MediaLink.create(user_id: paris.id, link: Faker::Avatar.image, link_type:'image/png')
 
 PetsMediaLink.create(pet_id: new_pet.id, media_link_id: new_link.id)
