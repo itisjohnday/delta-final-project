@@ -15,10 +15,11 @@
       <tr>
         <td><%= link_to pet.name, pet_path(id: pet.id) %></td>
         <td><%= pet.breed %></td>
-        <td><%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
-            <%= link_to 'Destroy', pet_path(id: pet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-
+        <% if current_user && pet.user_id == current_user.id %>
+          <td><%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
+              <%= link_to 'Destroy', pet_path(id: pet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        <% end %>
         </td>
       </tr>
     <% end %>

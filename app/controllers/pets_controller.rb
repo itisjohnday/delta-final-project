@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_pet, except: [:index, :new, :create]
 
 
