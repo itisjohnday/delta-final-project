@@ -12,6 +12,7 @@ class MediaLinksController < ApplicationController
   end
 
   def new
+    binding.pry
     @media_link = MediaLink.new
   end
 

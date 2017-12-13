@@ -1,0 +1,6 @@
+<%= form_tag user_profile_media_links_path(user_profile_id: current_user.id), enctype: 'multipart/form-data' do %>
+  <%= file_field_tag :file  %>
+  <br>
+  <%= submit_tag 'Upload file' %>
+<% end %>
+

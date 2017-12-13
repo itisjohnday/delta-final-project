@@ -27,17 +27,35 @@
   <tbody>
     <% @pets.each do |pet| %>
       <tr>
-        <td><%= link_to pet.name, pet_path(id: pet.id) %></td>
-        <td><%= pet.breed %></td>
+        <td>
+          <% if @user == current_user %>
+            <%= check_box_tag pet.name, pet.id %>
+          <% end %>
+          <%= link_to pet.name, pet_path(id: pet.id) %>
+        </td>
+        <td>
+          <%= pet.breed %>
+        </td>
         <% if pet.profile_pic != nil %>
-          <td><%= pet.profile_pic %></td>
+          <td>
+            <%= pet.profile_pic %>
+          </td>
         <% end %>
         <% if @user == current_user %>
-          <td><%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
-              <%= link_to 'Destroy', pet_path(id: pet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <td>
+            <%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
+            <%= link_to 'Destroy', pet_path(id: pet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
           </td>
         <% end %>
       </tr>
     <% end %>
   <tbody>
 </table>
+
+<% if @user.id == current_user.id %>
+  <div><b>tag you pet and select an image or video to upload</b></div>
+  <%= render partial: 'media_links/form', locals: {pets: @pets} %>
+<% end %>
+
+
+
