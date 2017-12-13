@@ -7,7 +7,9 @@
     <h4>Breed</h4>
     <p><%= @pet.breed %></p>
 
-    <h4>PICTURES HERE??</h4>
+    <% @pet.media_links.each do |obj| %>
+    <img src= <%= obj.link %> />
+    <% end %>
 
 
     <h5>   <%= link_to 'Back to all pets', pets_path %> </h5>
