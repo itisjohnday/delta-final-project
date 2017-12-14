@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :pets
-  has_many :media_links
+  has_many :pets, dependent: :destroy
+  has_many :media_links, dependent: :destroy
 
 end

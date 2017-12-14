@@ -7,7 +7,8 @@
  -->
 
 <div>
-  <%= form_for @pet do |f| %>
+
+  <%= form_for @pet, enctype: 'multipart/form-data' do |f| %>
     <% if @pet.errors.any? %>
     <fieldset>
         <div id="error_explanation">
@@ -23,15 +24,22 @@
 
       <div class='form-group'>
         <%= f.label :name, class: 'col-lg-2' %>
-        <div class='col-lg-10'>
+        <div class='col-lg-5'>
         <%= f.text_field :name, class: 'form-control', required: true %>
         </div>
       </div>
 
       <div class='form-group'>
         <%= f.label :breed, class: 'col-lg-2' %>
-        <div class='col-lg-10'>
+        <div class='col-lg-5'>
         <%= f.text_field :breed, class: 'form-control', required: true %>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :'upload a pet avatar', class: 'col-lg-2' %>
+        <div class='col-lg-5'>
+        <%= f.file_field :file, required: true  %>
         </div>
       </div>
 

@@ -2,6 +2,8 @@
   <h1><%= @pet.name %></h1>
 </div>
 
+<img src=<%= @pet.profile_pic %> />
+
 <div class='row'>
   <div class='col-lg-12'>
     <h4>Breed</h4>
@@ -22,6 +24,6 @@
 
 
 <div class='well'>
-  <%= link_to 'Edit', edit_pet_path(@pet), class: 'btn btn-primary' %> |
+  <%= logged link_to 'Edit', edit_pet_path(@pet), class: 'btn btn-primary' %> |
   <%= link_to 'Back', pets_path %> |
 </div>
