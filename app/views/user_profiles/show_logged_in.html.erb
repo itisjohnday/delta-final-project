@@ -1,7 +1,11 @@
-<div class='page-header'>
+<div class="container-fluid">
+  <div class='col-8 justify-content-center'>
+    <div class='page-header'>
   <h1><%= @user.username %></h1>
 </div>
-
+<% if @user.profile_pic %>
+  <img src=<%= @user.profile_pic %> />
+<% end %>
 <hr>
 
 <h3> <strong>Username: </strong><%= @user.username %> </h3>
@@ -9,6 +13,7 @@
 <h3> <strong>Name: </strong> <%= @user.f_name %> <%= @user.l_name %>  </h3>
 
 <h3> <strong>Email: </strong> <%= @user.email %> </h3>
+
 
 <td>
     <%= link_to 'Edit Account Information', edit_user_registration_path, class: 'btn btn-primary' %>
@@ -35,9 +40,9 @@
           <%= pet.breed %>
         </td>
         <% if pet.profile_pic != nil %>
-          <td>
-            <%= pet.profile_pic %>
-          </td>
+              <td>
+                <img src=<%= pet.profile_pic %> />
+              </td>
         <% end %>
           <td>
             <%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
@@ -45,11 +50,15 @@
           </td>
       </tr>
     <% end %>
+
   <tbody>
 </table>
+    <%= link_to 'Add a new pet', new_pet_path, class: 'btn btn-primary' %>
 
     <div><b>tag you pet and select an image or video to upload</b></div>
     <%= file_field_tag :file  %>
     <br>
     <%= submit_tag 'Upload file' %>
 <% end %>
+</div>
+</div
