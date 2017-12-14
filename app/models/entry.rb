@@ -1,3 +1,4 @@
 class Entry < ApplicationRecord
-  has_one :pets_media_link
+  belongs_to :pets_media_link
+  has_one :media_link, through: :pets_media_link
 end
