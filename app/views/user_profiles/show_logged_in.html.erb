@@ -62,3 +62,54 @@
 <% end %>
 </div>
 </div
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <td>
+            <%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
+            <%= link_to 'Destroy', pet_path(id: pet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+      </tr>
+    <% end %>
+
+  <tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <%= link_to 'Add a new pet', new_pet_path, class: 'btn btn-primary' %>
+
+    <div><b>tag you pet and select an image or video to upload</b></div>
+    <%= file_field_tag :file  %>
+    <br>
+    <%= submit_tag 'Upload file' %>
+<% end %>
+</div>
+</div
