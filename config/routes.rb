@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   get "/find_pets" => "find_pets#show"
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   resources :pets
 
   resources :user_profiles do
@@ -21,4 +25,4 @@ Rails.application.routes.draw do
       end
     end
   end
-end 
+end
