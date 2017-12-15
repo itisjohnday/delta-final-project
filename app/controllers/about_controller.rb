@@ -10,10 +10,15 @@ class AboutController < ApplicationController
     @users = User.where(username: params['search'])
   end
 
+
   def prelim
     @media = MediaLink.first(10)
   end
 
   def vote_reg
+
+  def pics
+    
+
   end
 end
