@@ -1,5 +1,16 @@
 {
   "name": "detla-final-project",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^3.1.1",
+    "babel-preset-react": "^6.24.1",
+    "coffeescript": "1.12.7",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react_ujs": "^2.4.3"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.7"
+  }
 }

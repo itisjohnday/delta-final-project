@@ -1,4 +1,5 @@
 class AboutController < ApplicationController
+  before_action
   def index
   end
 
@@ -8,5 +9,10 @@ class AboutController < ApplicationController
   def search
     @pets = Pet.where(name: params['search'])
     @users = User.where(username: params['search'])
+  end
+
+  def prelim
+    @media = MediaLink.first(10)
+
   end
 end
