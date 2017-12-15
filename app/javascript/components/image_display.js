@@ -14,8 +14,5 @@ class ImageDisplay extends React.Component {
   }
 }
 
-ImageDisplay.propTypes = {
-  image: PropTypes.string
-};
 
 export default ImageDisplay

@@ -15,27 +15,33 @@ class ImageScroller extends React.Component {
     }
   }
 
+add_links(array_links) {
+  console.log(array_links)
+  this.setState({links: array_links})
+}
+
 getMore() {
-  fetch('http://localhost:3001/api/articles', {
+fetch('http://localhost:3000/get_links', {
   headers: {
     'Content-Type': 'application/json'
   },
-  method: 'get',
-  body: JSON.stringify(articleObject) 
+  method: 'get' 
 }).then((response) => {
   return response.json();
 }).then((json) => {
-  console.log(json);
+  this.add_links(json);
 })
-
 }
 
 handleButton(event, pts) {
   console.log(pts)
   event.preventDefault()
   this.setState({links: this.state.links.slice(1)})
-  if (this.state.links.length == 0) {
-    getMore()
+  if (this.state.links.length == 2) {
+    this.getMore()
+  }
+  if (this.state.links.length == 0){
+    
   }
   
 }
@@ -43,7 +49,7 @@ handleButton(event, pts) {
 
   render () {
     // const display_image = this.state.links[0].link;
-    console.log(this.state.links)
+    // console.log(this.state.links)
     const setImage = this.state.links[0].link;
     return (
       <div className="container-fluid">
