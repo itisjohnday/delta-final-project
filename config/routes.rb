@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get "/about" => "about#show"
   get "/search" => 'about#search'
+  get '/prelim' => 'about#prelim'
   root to: "about#index"
 
   get "/find_pets" => "find_pets#show"
