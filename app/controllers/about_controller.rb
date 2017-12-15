@@ -4,4 +4,9 @@ class AboutController < ApplicationController
 
   def show 
   end
+
+  def search
+    @pets = Pet.where(name: params['search'])
+    @users = User.where(username: params['search'])
+  end
 end

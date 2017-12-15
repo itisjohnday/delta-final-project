@@ -4,11 +4,11 @@ class PetsController < ApplicationController
 
 
   def index
-    @pets = Pet.all
+    @pets = Pet.where(user_id: current_user.id)
   end
 
   def show
-
+    
   end
 
   def new
@@ -16,12 +16,19 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.new(pet_params)
-    @pet.user_id = current_user.id
-    
-    if @pet.save
-      redirect_to pets_path, notice: 'pet was successfully created.'
+    # binding.pry
+    profile_pic_load = HandleImages.new(params[:pet][:file], current_user)
+    object = profile_pic_load.create_object
+    object = profile_pic_load.upload(object)
+
+    upload = MediaLink.new(user_id: current_user.id, link: object.public_url, link_type: params[:pet][:file].content_type)
+    pet = Pet.new(user_id: current_user.id, name: params[:pet][:name], breed: params[:pet][:breed],profile_pic: object.public_url)
+    # binding.pry  
+    if upload.save && pet.save
+      redirect_to user_profile_path(id: current_user.id), success: 'File successfully uploaded'
     else
+      flash.now[:notice] = 'There was an error'
+      @pet = pet.new
       render :new
     end
   end
