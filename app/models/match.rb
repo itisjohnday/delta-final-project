@@ -1,6 +1,6 @@
 class Match < ApplicationRecord
   has_many :vote_checks
-  has_one :contestant_1_entry
-  has_one :contestant_2_entry
+  belongs_to :contestant_1, class_name: 'Entry', foreign_key: 'contestant_1_entry_id'
+  belongs_to :contestant_2, class_name: 'Entry', foreign_key: 'contestant_2_entry_id'
   belongs_to :round
 end

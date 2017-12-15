@@ -1,5 +1,5 @@
 class Round < ApplicationRecord
-  belongs_to :tournament
-  has_one :round_name
   has_many :matches
+  has_many :entries, through: :matches
+  belongs_to :tournament
 end

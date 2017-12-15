@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20171213180011) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer "contestant_1_entry_id", null: false
-    t.integer "contestant_2_entry_id"
+    t.bigint "contestant_1_entry_id", null: false
+    t.bigint "contestant_2_entry_id"
     t.bigint "round_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20171213180011) do
 
   create_table "rounds", force: :cascade do |t|
     t.string "name"
+    t.datetime "start"
+    t.datetime "stop"
     t.bigint "tournament_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -12,4 +12,12 @@ Rails.application.routes.draw do
   resources :user_profiles do
     resources :media_links
   end
+
+  resources :tournaments do
+    resources :rounds do
+      resources :matches do
+        resources :entries
+      end
+    end
+  end
 end 
