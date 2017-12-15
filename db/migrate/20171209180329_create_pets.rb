@@ -4,7 +4,6 @@ class CreatePets < ActiveRecord::Migration[5.1]
       t.belongs_to :user
       t.string :name, null: false
       t.string :breed, null: false
-
       t.timestamps
     end
   end

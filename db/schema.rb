@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212155941) do
+ActiveRecord::Schema.define(version: 20171213180011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "vote_count", default: 0, null: false
+    t.bigint "pets_media_link_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pets_media_link_id"], name: "index_entries_on_pets_media_link_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "contestant_1_entry_id", null: false
+    t.bigint "contestant_2_entry_id"
+    t.bigint "round_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["round_id"], name: "index_matches_on_round_id"
+  end
 
   create_table "media_links", force: :cascade do |t|
     t.bigint "user_id"
@@ -43,6 +60,22 @@ ActiveRecord::Schema.define(version: 20171212155941) do
     t.index ["pet_id"], name: "index_pets_media_links_on_pet_id"
   end
 
+  create_table "rounds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start"
+    t.datetime "stop"
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_rounds_on_tournament_id"
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string "theme", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "f_name", default: "", null: false
     t.string "l_name", default: "", null: false
@@ -62,6 +95,15 @@ ActiveRecord::Schema.define(version: 20171212155941) do
     t.string "profile_pic"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vote_checks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "match_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_vote_checks_on_match_id"
+    t.index ["user_id"], name: "index_vote_checks_on_user_id"
   end
 
 end
