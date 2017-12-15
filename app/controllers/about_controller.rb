@@ -16,6 +16,7 @@ class AboutController < ApplicationController
   end
 
   def vote_reg
+  end
 
   def pics
     
