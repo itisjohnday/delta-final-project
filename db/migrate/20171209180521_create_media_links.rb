@@ -4,7 +4,6 @@ class CreateMediaLinks < ActiveRecord::Migration[5.1]
       t.belongs_to  :user
       t.string      :link
       t.string      :link_type
-
       t.timestamps
     end
   end

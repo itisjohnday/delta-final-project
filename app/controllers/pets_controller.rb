@@ -4,7 +4,7 @@ class PetsController < ApplicationController
 
 
   def index
-    # @pets = Pet.where(user_id: current_user.id)
+
     @pets = Pet.all
   end
 

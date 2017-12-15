@@ -9,4 +9,8 @@ class AboutController < ApplicationController
     @pets = Pet.where(name: params['search'])
     @users = User.where(username: params['search'])
   end
+
+  def pics
+    
+  end
 end
