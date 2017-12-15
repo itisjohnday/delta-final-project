@@ -7,14 +7,16 @@ alex = User.create(f_name: 'Alex', l_name: 'Sachs', username: 'asachs', email:'a
 mickey = User.create(f_name: 'Mickey', l_name: 'Witchuwong', username: 'mwitchuwong', email: 'mickey@tournapets.com', password: 'tournapets')
 kara = User.create(f_name: 'Kara', l_name: 'Carrell', username: 'kcarrell', email:'kara@tournapets.com', password: 'tournapets')
 
+
+
 i = 1
 8.times do
-  new_pet = Pet.create(breed: Faker::ElderScrolls.creature, name: Faker::Simpsons.character, user_id: i)
-  new_link = MediaLink.create(user_id: i, link: "#{i}.jpeg", link_type:'image/png')
+  new_pet = Pet.create(breed: Faker::Dog.breed, name: Faker::Dog.name, user_id: i)
+  new_link = MediaLink.create(user_id: i, link: Faker::Fillmurray.image, link_type:'image/jpg')
   new_pets_media_link = PetsMediaLink.create(pet_id: new_pet.id, media_link_id: new_link.id)
   new_entry = Entry.create(pets_media_link_id: new_pets_media_link.id, vote_count: rand(20..100))
   if i % 2 == 0
-    new_pets_media_link2 = PetsMediaLink.create(pet_id: new_pet.id -1, media_link_id: new_link.id)
+    new_pets_media_link2 = PetsMediaLink.create(pet_id: (i - 1), media_link_id: new_link.id)
     new_entry2 = Entry.create(pets_media_link_id: new_pets_media_link2.id, vote_count: rand(20..100))
   end
   i += 1
