@@ -22,4 +22,14 @@ class AboutController < ApplicationController
       end
     end
   end
+
+  def prelim
+    @media = MediaLink.first(10)
+  end
+
+  def vote_reg
+  end
+
+  def pics
+  end
 end
