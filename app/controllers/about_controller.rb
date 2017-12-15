@@ -1,5 +1,4 @@
 class AboutController < ApplicationController
-  before_action
   def index
   end
 
@@ -13,6 +12,8 @@ class AboutController < ApplicationController
 
   def prelim
     @media = MediaLink.first(10)
+  end
 
+  def vote_reg
   end
 end

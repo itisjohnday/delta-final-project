@@ -1,14 +1,12 @@
 {
   "alex.jpg": "/packs/alex-06ae4b647a0a596f4856dd70354c2048.jpg",
-  "application.js": "/packs/application-e833532f439a0b16b4d4.js",
-  "application.js.map": "/packs/application-e833532f439a0b16b4d4.js.map",
+  "application.js": "/packs/application-ebac44d8953f8b5baf93.js",
+  "application.js.map": "/packs/application-ebac44d8953f8b5baf93.js.map",
   "components/images/bad_face.svg": "/packs/components/images/bad_face-e12428f4c5219e4def77e1752433f1d7.svg",
-  "components/images/happy face.svg": "/packs/components/images/happy face-63aec521f4e0e5ff72f4ce4dba664cd7.svg",
-  "components/images/ok face.svg": "/packs/components/images/ok face-740fdfdaaf228095e0d7e0df622c9b2c.svg",
-  "image_scroll.js": "/packs/image_scroll-f1a44b40c3f1154995b1.js",
-  "image_scroll.js.map": "/packs/image_scroll-f1a44b40c3f1154995b1.js.map",
-  "server_rendering.js": "/packs/server_rendering-fe9ec03b6420c800164f.js",
-  "server_rendering.js.map": "/packs/server_rendering-fe9ec03b6420c800164f.js.map",
   "components/images/happy_face.svg": "/packs/components/images/happy_face-63aec521f4e0e5ff72f4ce4dba664cd7.svg",
-  "components/images/ok_face.svg": "/packs/components/images/ok_face-740fdfdaaf228095e0d7e0df622c9b2c.svg"
+  "components/images/ok_face.svg": "/packs/components/images/ok_face-740fdfdaaf228095e0d7e0df622c9b2c.svg",
+  "image_scroll.js": "/packs/image_scroll-d74aec79d6b535425094.js",
+  "image_scroll.js.map": "/packs/image_scroll-d74aec79d6b535425094.js.map",
+  "server_rendering.js": "/packs/server_rendering-75b81ff788e582fba82c.js",
+  "server_rendering.js.map": "/packs/server_rendering-75b81ff788e582fba82c.js.map"
 }
