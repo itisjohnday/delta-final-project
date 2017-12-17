@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/prelim' => 'about#prelim'
   get '/dummyjson' => 'about#dummyjson'
   get "/get_links" => "about#return_links"
+  get "/no_entries" => "about#no_entries"
+  post "/vote_reg" => "about#vote_reg"
 
   root to: "about#index"
 
