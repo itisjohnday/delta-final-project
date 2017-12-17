@@ -11,39 +11,63 @@ class ImageScroller extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      links: this.props.images
+      links: this.props.images,
+      token: this.props.auth
     }
   }
 
+add_links(array_links) {
+  // console.log(array_links)
+  this.setState({links: array_links})
+}
+
 getMore() {
-  fetch('http://localhost:3001/api/articles', {
+fetch('http://localhost:3000/get_links', {
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   },
-  method: 'get',
-  body: JSON.stringify(articleObject) 
+  method: 'get' 
 }).then((response) => {
   return response.json();
 }).then((json) => {
-  console.log(json);
+  this.add_links(json);
+})
+}
+
+sendResult(pts) {
+  // console.log(JSON.stringify({entry: this.state.links[0].entry_id, vote: pts}))
+  fetch('http://localhost:3000/vote_reg', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': this.state.token
+    },
+    body: JSON.stringify({entry: this.state.links[0].entry_id, vote: pts})
+}).then((response) => {
+  console.log(response);
 })
 
 }
 
 handleButton(event, pts) {
-  console.log(pts)
+  // console.log(pts)
   event.preventDefault()
+  this.sendResult(pts)
   this.setState({links: this.state.links.slice(1)})
-  if (this.state.links.length == 0) {
-    getMore()
+  if (this.state.links.length == 2) {
+    this.getMore()
   }
-  
+
 }
 
 
   render () {
-    // const display_image = this.state.links[0].link;
-    console.log(this.state.links)
+    
+    const display_image = this.state.links[0].link;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    // console.log(this.props.auth.toString())
+    console.log(token)
     const setImage = this.state.links[0].link;
     return (
       <div className="container-fluid">
@@ -51,9 +75,9 @@ handleButton(event, pts) {
           <div className="card" style={{width: 40 + 'em', border: 'none'}}>
               <ImageDisplay image={setImage} />
               <div className="row justify-content-lg-around">
-                <button className="btn" style={{background: 'white'}} onClick={(e)=> {this.handleButton(e, 0)}}><img className="col-lg-12" src={soso} /></button>
-                <button className="btn" style={{background: 'white'}} onClick={(e)=> {this.handleButton(e ,3)}}><img className="col-lg-12" src={okok} /></button>
-                <button className="btn" style={{background: 'white'}} onClick={(e)=> {this.handleButton(e ,5)}}><img className="col-lg-12" src={great} /></button>
+                <img onClick={(e)=> {this.handleButton(e, 0)}} className="face" src={soso} />
+                <img onClick={(e)=> {this.handleButton(e, 3)}} className="face" src={okok} />
+                <img onClick={(e)=> {this.handleButton(e, 5)}} className="face" src={great} />
               </div>
           </div>
         </div>
@@ -63,7 +87,8 @@ handleButton(event, pts) {
 }
 
 ImageScroller.propTypes = {
-  images: PropTypes.array
+  images: PropTypes.array,
+  auth: PropTypes.string
 };
 
 export default ImageScroller
