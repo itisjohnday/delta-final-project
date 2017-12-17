@@ -69,7 +69,7 @@ body {
 
 .center {
     margin: auto;
-    width: 18%;
+    width: 30%;
     border: 5px solid #aaa;
     padding: 35px;
 }
@@ -105,14 +105,16 @@ h1 {
 <div class="leftbox">
 <%= form_tag user_profile_media_links_path(user_profile_id: current_user.id), enctype: 'multipart/form-data' do %>
 
+
     <%= link_to 'Add a new pet', new_pet_path, class: 'btn btn-primary' %>
+
 
     <div><b>tag you pet and select an image or video to upload</b></div>
     <%= file_field_tag :file  %>
     <br>
     <%= submit_tag 'Upload file' %>
-<% end %>
 </div>
+   
 
 
 
@@ -152,6 +154,7 @@ h1 {
       <tbody>
     </table>
   </div>
+<% end %>
 
 
 
