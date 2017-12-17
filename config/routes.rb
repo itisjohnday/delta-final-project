@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get "/find_pets" => "find_pets#show"
 
+  get "/get_links" => "about#return_links"
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

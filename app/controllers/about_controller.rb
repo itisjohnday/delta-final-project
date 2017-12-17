@@ -11,16 +11,15 @@ class AboutController < ApplicationController
   end
 
   def return_links
-    8.times do
-      output_json = {:link_array => []}
-      Match.all.each do |match|
-        match.vote_checks.each do |vote_check|
-          if current_user.id != vote_check.
-            output_json[:link_array] << {:link => , :entry_id =>}
-          end
-        end
-      end
+    output_json = []
+    Match.all.each do |current_match|
+      # current_match.vote_checks.each do |vote_check|
+        # if current_user.id != vote_check.user_id && current_match.id != vote_check.match_id
+          output_json.push({link: current_match.find_link, entry_id: current_match.contestant_1.id})
+        # end
+      # end
     end
+    render json:output_json
   end
 
   def prelim
