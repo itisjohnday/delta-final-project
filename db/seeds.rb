@@ -31,12 +31,14 @@ i = 1
 end
 
 tournament = Tournament.create(theme: 'Cutest Puppy')
-round_prelim = Round.create(tournament_id: 1, name: 'Preliminary Round')
 i = 1
 8.times do
-  Match.create!(contestant_1_entry_id: i, contestant_2_entry_id: i, round_id: 1)
+  
   i += 1
 end
-round_8 = Round.create(tournament_id: 1, name: 'Elite 8')
-round_4 = Round.create(tournament_id: 1, name: 'Final 4')
-round_2 = Round.create(tournament_id: 1, name: 'Championship')
+tournament2 = Tournament.create(theme: 'Funniest Trick')
+i = 1
+8.times do
+  
+  i += 1
+end

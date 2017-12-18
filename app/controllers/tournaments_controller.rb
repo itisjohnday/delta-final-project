@@ -40,6 +40,11 @@ class TournamentsController < ApplicationController
     redirect_to tournaments_path, notice: 'tournament was successfully removed'
   end
 
+  def enter_tournament(pets_media_link_id)
+    entry = Entry.create(pets_media_link_id: pets_media_link_id, vote_count: 0)
+    Match.create!(contestant_1_entry_id: entry.id, contestant_2_entry_id: entry.id, round_id: 1)
+  end
+
   private
   def tournament_params  
     params['tournament'].permit(:theme)

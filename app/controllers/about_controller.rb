@@ -23,6 +23,11 @@ class AboutController < ApplicationController
     render json:output_json
   end
 
+
+  def update_vote_count
+    @entry.update(score_params)
+  end
+
   def prelim
     output_json = []
     Match.all.each do |current_match|
@@ -47,5 +52,12 @@ class AboutController < ApplicationController
   end
 
   def no_entries
+  end
+
+   
+  private
+
+  def score_params  
+    params['entry'].permit(:vote_count)
   end
 end
