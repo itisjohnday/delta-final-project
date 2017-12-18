@@ -1,64 +1,163 @@
-<div class="container-fluid">
-  <div class='col-8 justify-content-center'>
-    <div class='page-header'>
-  <h1><%= @user.username %></h1>
-</div>
-<% if @user.profile_pic %>
-  <img src=<%= @user.profile_pic %> />
-<% end %>
-<hr>
+<style>
+*{
+    margin:0;
+    padding:0;
+  }
+  #cardWrapper{
+    margin:50px;
+  }
+  #cardWrapper > img{
+    height: 200px;
+    width:300px;
+    display: inline-block;
+    vertical-align: middle;
+  } 
+  #cardContentContainer{
+    width: 300px;
+    height: 350px;
+    background: #FFFAFA;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-<h3> <strong>Username: </strong><%= @user.username %> </h3>
+  #cardContentContainer > h2 {
+    font-size:2em;
+    font-weight:400;
+    margin-bottom:20px;
+  }
 
-<h3> <strong>Name: </strong> <%= @user.f_name %> <%= @user.l_name %>  </h3>
+  #cardContentContainer > p{
+    font-size:.9em;
+    line-height:1.5;
+    color: #757575;
+  }
 
-<h3> <strong>Email: </strong> <%= @user.email %> </h3>
+
+  * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #fff;
+}
 
 
-<td>
-    <%= link_to 'Edit Account Information', edit_user_registration_path, class: 'btn btn-primary' %>
-</td>
+.column {
+    background-color: lightblue;
+    float: left;
+    width: 20%;
+    padding: 100px;
+    height: 700px; 
+}
+
+
+.columnPet {
+    background-color: #fff;
+    float: left;
+    width: 20%;
+    padding: 10px;
     
+}
+
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.center {
+    margin: auto;
+    width: 30%;
+    border: 5px solid #aaa;
+    padding: 35px;
+}
+
+.leftbox {
+    margin: auto;
+    width: 20%;
+    border: 0px solid #fff;
+    padding: 50px;
+}
+
+
+h1 {
+  font: 400 100px/1.5 'Pacifico', Helvetica, sans-serif;
+  color: #2b2b2b;
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+}
+</style>
+
+
+
+
+<div class="center">
+    <h1><%= @user.username %></h1>
+    <% if @user.profile_pic %> <img src=<%= @user.profile_pic %> /><% end %>
+    <h3> <strong>Username: </strong><%= @user.username %> </h3>
+    <h3> <strong>Name: </strong> <%= @user.f_name %> <%= @user.l_name %>  </h3>
+    <h3> <strong>Email: </strong> <%= @user.email %> </h3> 
+    <%= link_to 'Edit Account Information', edit_user_registration_path, class: 'btn btn-primary' %>
+</div>
+
+
+<div class="leftbox">
 <%= form_tag user_profile_media_links_path(user_profile_id: current_user.id), enctype: 'multipart/form-data' do %>
 
-<table class='table table-striped table-hover'>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Breed</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @pets.each do |pet| %>
-      <tr>
-        <td>
-          <%= check_box_tag 'pets[]', pet.id%>
-          <%= link_to pet.name, pet_path(id: pet.id) %>
-        </td>
-        <td>
-          <%= pet.breed %>
-        </td>
-        <% if pet.profile_pic != nil %>
-              <td>
-                <img src=<%= pet.profile_pic %> />
-              </td>
-        <% end %>
-          <td>
-            <%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
-            <%= link_to 'Destroy', pet_path(id: pet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-      </tr>
-    <% end %>
-
-  <tbody>
-</table>
     <%= link_to 'Add a new pet', new_pet_path, class: 'btn btn-primary' %>
+
 
     <div><b>tag you pet and select an image or video to upload</b></div>
     <%= file_field_tag :file  %>
     <br>
     <%= submit_tag 'Upload file' %>
-<% end %>
 </div>
-</div
+   
+
+
+
+  <div class="row">
+  
+    <table class='table table-striped table-hover'>
+    
+      <tbody>
+        <% @pets.each do |pet| %>
+          <tr>
+
+        <div class="column" style="background-color:#fff;">
+           
+       
+           <div id="cardWrapper">
+           
+            <% if pet.profile_pic != nil %>         
+                <img src=<%= pet.profile_pic %> />
+                <br>
+                   <%= check_box_tag 'pets[]', pet.id%>
+          <%= link_to pet.name, pet_path(id: pet.id) %>
+
+                </br>
+                 <div id="cardContentContainer">
+
+                  <h2>   <%= link_to pet.name, pet_path(id: pet.id) %> </h2>
+                  <%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
+                   <%= link_to 'Destroy', pet_path(id: pet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <p> <%= pet.breed %> </p>
+                  <p>The sturdy Airedale is the largest of all terriers. Males stand about 23 inches at the shoulder; females are a bit smaller. The wire coat is tan with dark markings. Rangy but muscular legs give Airedales a regal lift in their bearing, and the long head—with its sporty beard and mustache. </p>
+                  </div>
+            </div>
+        </div>
+            <% end %>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  </div>
+<% end %>
+
+
+
+
+
+
