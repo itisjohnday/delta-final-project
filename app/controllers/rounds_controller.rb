@@ -18,6 +18,8 @@ class RoundsController < ApplicationController
         match4 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[3].contestant_1.id, contestant_2_entry_id: prelim_matches_order[4].contestant_1.id)
       when 4..7
         @round = Round.create(tournament_id: @tournament.id, name: 'Final 4')
+        match1 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[0].contestant_1.id, contestant_2_entry_id: prelim_matches_order[7].contestant_1.id)
+        match2 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[1].contestant_1.id, contestant_2_entry_id: prelim_matches_order[6].contestant_1.id)
       when 2..3
         @round = Round.create(tournament_id: @tournament.id, name: 'Championship')
     end

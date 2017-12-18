@@ -17,6 +17,7 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.new(tournament_params)
     
+    
     if @tournament.save
       redirect_to pets_path, notice: 'pet was successfully created.'
     else
