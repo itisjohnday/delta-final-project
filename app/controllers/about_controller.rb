@@ -21,6 +21,11 @@ class AboutController < ApplicationController
   end
 
   def bracket
+    @tournament = Tournament.find(1)
+    round = 1
+    @round_matches = @tournament.rounds.find(round).matches
+    p @around_matches
+    p @tournament
   end
 
   def dummyjson
