@@ -37,13 +37,11 @@ gem 'jbuilder', '~> 2.5'
 #authentication
 gem 'devise'
 
-gem 'json'
 #placing in prod in case we need online testing
 gem 'faker'
-
+gem 'json'
 gem 'faraday'
 gem 'faraday_middleware'
-gem 'json'
 gem 'aws-sdk-s3'
 
 gem 'jquery-rails'
