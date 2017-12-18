@@ -6,5 +6,5 @@ class Match < ApplicationRecord
 
   def find_link
     self.contestant_1.pets_media_link.media_link.link
-  end
+  end  
 end
