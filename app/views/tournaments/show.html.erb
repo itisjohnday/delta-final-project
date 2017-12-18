@@ -7,20 +7,17 @@
     <% i = 0 %>
     <% @tournament.rounds.each do |round| %>
       <p> <%= round.name %> </p>
-      <% if i == 0 %>
-        <% round.matches.each do |match| %>
+      <% round.matches.each do |match| %>
+        <% if i == 0 %>
           <%= "#{match.contestant_1.pet.name} : #{match.contestant_1.vote_count}" %>
           <br/>
-        <% end %>
-      <% else %>
-        <% round.matches.each do |match| %>
-          <%= "#{match.contestant_1.pet.name} : #{match.contestant_1.vote_count} VS " %>
-          <%= "#{match.contestant_2.pet.name} : #{match.contestant_2.vote_count}" %>
+        <% else %>
+          <%= "#{match.contestant_1.pet.name} : #{match.contestant_1.vote_count} VS #{match.contestant_2.pet.name} : #{match.contestant_2.vote_count}" %>
           <br/>
         <% end %>
       <% end %>
-      <br/>
       <% i += 1 %>
+      <br/>
     <% end %>
     <h5>   <%= link_to 'Back to All Tournaments', tournaments_path %> </h5>
   </div>
