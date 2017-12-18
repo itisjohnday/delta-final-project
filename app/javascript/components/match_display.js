@@ -11,7 +11,7 @@ class MatchDisplay extends React.Component {
     return (
       <div className="match">
 
-
+      <h4 class ="header_vote"> Click to vote on the best!  </h4> 
         <div class="grid-container">
           <div class="one"> <p class="puppyname1"> <strong> Sam </strong> </p> <img src={puppy1} className="puppy1" alt="" /> <p class="vote1"> <strong> <a href="url">vote</a> </strong> </p> </div>
           <div class="two"> <strong> <p className="vs" > VS </p> </strong> </div>
