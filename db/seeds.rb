@@ -23,9 +23,6 @@ i = 1
   new_link = MediaLink.create(user_id: i, link: images[i-1], link_type:'image/jpg')
   new_pet = Pet.create(breed: Faker::Dog.breed, name: Faker::Dog.name, user_id: i, profile_pic: images[i-1])
   new_pets_media_link = PetsMediaLink.create(pet_id: new_pet.id, media_link_id: new_link.id)
-  if i % 2 == 0
-    new_pets_media_link2 = PetsMediaLink.create(pet_id: (i - 1), media_link_id: new_link.id)
-  end
   i += 1
 end
 

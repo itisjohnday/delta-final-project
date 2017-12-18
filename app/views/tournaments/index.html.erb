@@ -13,12 +13,14 @@
     <% @tournaments.each do |tournament| %>
       <tr>
         <td><%= link_to tournament.theme, tournament_path(id: tournament.id) %></td>
-        <td><%= tournament.theme %></td>
           <td>
-            <%= link_to 'Enter Tournament', tournament_rounds_path(tournament_id: tournament.id) %> |
-            <%= link_to 'View Details', tournament_rounds_path(tournament_id: tournament.id) %> |
-            <%= link_to 'Edit', edit_tournament_path(id: tournament.id) %> |
-            <%= link_to 'Destroy', tournament_path(id: tournament.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if current_user %>
+              <%= link_to 'Enter Tournament', tournament_rounds_path(tournament_id: tournament.id) %> |
+            <% end%>
+            <% #if admin login %>
+              <%= link_to 'Edit', edit_tournament_path(id: tournament.id) %> |
+              <%= link_to 'Destroy', tournament_path(id: tournament.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% #end admin login check %>
           </td>
         </td>
       </tr>

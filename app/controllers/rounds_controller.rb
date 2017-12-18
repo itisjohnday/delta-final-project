@@ -1,7 +1,6 @@
 class RoundsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :new, :create]
   before_action :set_tournament, except: [:new, :create]
-  skip_before_action :verify_authenticity_token 
 
   def index
     @rounds = @tournament.rounds
@@ -11,17 +10,50 @@ class RoundsController < ApplicationController
     case match_count = @tournament.rounds.last.matches.count
       when 8..16
         prelim_matches_order = @tournament.rounds.last.matches.to_a.sort_by! {|match| match.contestant_1.vote_count}
+        prelim_matches_order = prelim_matches_order.reverse
         @round = Round.create(tournament_id: @tournament.id, name: 'Elite 8')
-        match1 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[0].contestant_1.id, contestant_2_entry_id: prelim_matches_order[7].contestant_1.id)
-        match2 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[1].contestant_1.id, contestant_2_entry_id: prelim_matches_order[6].contestant_1.id)
-        match3 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[2].contestant_1.id, contestant_2_entry_id: prelim_matches_order[5].contestant_1.id)
-        match4 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[3].contestant_1.id, contestant_2_entry_id: prelim_matches_order[4].contestant_1.id)
+        @match1 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[0].contestant_1.id, contestant_2_entry_id: prelim_matches_order[7].contestant_1.id)
+        @match2 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[1].contestant_1.id, contestant_2_entry_id: prelim_matches_order[6].contestant_1.id)
+        @match3 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[2].contestant_1.id, contestant_2_entry_id: prelim_matches_order[5].contestant_1.id)
+        @match4 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[3].contestant_1.id, contestant_2_entry_id: prelim_matches_order[4].contestant_1.id)
       when 4..7
         @round = Round.create(tournament_id: @tournament.id, name: 'Final 4')
-        match1 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[0].contestant_1.id, contestant_2_entry_id: prelim_matches_order[7].contestant_1.id)
-        match2 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[1].contestant_1.id, contestant_2_entry_id: prelim_matches_order[6].contestant_1.id)
+        if @match1.contestant_1.vote_count > @match1.contestant_2.vote_count
+          match_1_winner = @match1.contestant_1
+        else
+          match_1_winner = @match1.contestant_2
+        end
+        if @match2.contestant_1.vote_count > @match2.contestant_2.vote_count
+          match_2_winner = @match2.contestant_1
+        else
+          match_2_winner = @match2.contestant_2
+        end
+        if @match3.contestant_1.vote_count > @match3.contestant_2.vote_count
+          match_3_winner = @match3.contestant_1
+        else
+          match_3_winner = @match3.contestant_2
+        end
+        if @match4.contestant_1.vote_count > @match4.contestant_2.vote_count
+          match_4_winner = @match4.contestant_1
+        else
+          match_4_winner = @match4.contestant_2
+        end
+        @match5 = Match.create(round_id: @round.id, contestant_1_entry_id: match_1_winner.id, contestant_2_entry_id: match_4_winner.id)
+        @match6 = Match.create(round_id: @round.id, contestant_1_entry_id: match_2_winner.id, contestant_2_entry_id: match_3_winner.id)
       when 2..3
         @round = Round.create(tournament_id: @tournament.id, name: 'Championship')
+        if @match5.contestant_1.vote_count > @match5.contestant_2.vote_count
+          match_5_winner = @match5.contestant_1
+        else
+          match_5_winner = @match5.contestant_2
+        end
+        if @match6.contestant_1.vote_count > @match6.contestant_2.vote_count
+          match_6_winner = @match6.contestant_1
+        else
+          match_6_winner = @match6.contestant_2
+        end
+        @match7 = Match.create(round_id: @round.id, contestant_1_entry_id: match_5_winner.id, contestant_2_entry_id: match_6_winner.id)
+        redirect_to tournaments_path
     end
     
     if @round.save

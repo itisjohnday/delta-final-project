@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "/get_links" => "about#return_links"
   get "/no_entries" => "about#no_entries"
   post "/vote_reg" => "about#vote_reg"
-  post "/set_next_round" => "rounds#set_new_round"
+  post "/tournaments/:tournament_id/set_next_round" => "rounds#set_new_round"
 
   root to: "about#index"
 
