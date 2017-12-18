@@ -20,6 +20,9 @@ class AboutController < ApplicationController
     @media = output_json
   end
 
+  def bracket
+  end
+
   def dummyjson
     render json: [{link: "hahhaha", key: "1"}]
   end

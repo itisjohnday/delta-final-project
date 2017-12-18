@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/get_links" => "about#return_links"
   get "/no_entries" => "about#no_entries"
   post "/vote_reg" => "about#vote_reg"
+  get 'bracket' => 'about#bracket'
 
   root to: "about#index"
 
