@@ -2,7 +2,7 @@ class UserProfilesController < ApplicationController
   before_action :set_user, except: [:index]
 
   def index
-    binding.pry
+    # binding.pry
     @users = User.all
   end
 
