@@ -10,11 +10,17 @@ Rails.application.routes.draw do
   get "/no_entries" => "about#no_entries"
   get "/match_frame" => "about#match_frame"
   post "/vote_reg" => "about#vote_reg"
+
   get 'bracket' => 'about#bracket'
+
+  post "/tournaments/:tournament_id/set_next_round" => "rounds#set_new_round"
+
 
   root to: "about#index"
 
   get "/find_pets" => "find_pets#show"
+
+  get "/get_links" => "about#return_links"
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
