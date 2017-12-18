@@ -1,0 +1,68 @@
+<%= javascript_pack_tag "application" %>
+
+<style>
+
+.match {
+  width: 100%
+
+}
+.puppy1 {
+  border-radius: 25px;
+  border: 2px solid #708090;
+  width: 300px;
+  height: 300px;
+}
+
+.puppy2 {
+  border-radius: 25px;
+  border: 2px solid #708090;
+  width: 300px;
+  height: 300px;
+
+}
+
+.vs {
+  vertical-align: middle;
+  font-size: 60px;
+}
+
+.grid-container {
+  width: 80%;
+  grid-template-columns: repeat(3, 1fr);
+
+  display: inline-grid;
+  grid-column-gap: 40px;
+  grid-row-gap: 20px;
+  padding: 50px;
+  padding-left: 15cm;
+}
+
+.one {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+
+}
+.two {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+  text-align: center;
+}
+.three {
+  grid-column: 4;
+  grid-row: 4;
+  text-align: center;
+}
+
+.puppyname1 {
+  font-size: 30px;
+
+}
+
+.puppyname2 {
+  font-size: 30px;
+}
+
+</style>
+
+<%= react_component('match_display', props = {images: @media, auth: form_authenticity_token}, prerender: false) %>
