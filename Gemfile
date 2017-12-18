@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.0'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -36,16 +37,30 @@ gem 'jbuilder', '~> 2.5'
 #authentication
 gem 'devise'
 
+gem 'json'
+#placing in prod in case we need online testing
+gem 'faker'
+
 gem 'faraday'
 gem 'faraday_middleware'
-
 gem 'json'
+gem 'aws-sdk-s3'
+
+gem 'jquery-rails'
+gem 'sprockets-rails'
+gem 'bootstrap'
+
+gem 'webpacker'
+gem 'react-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'pry'
+  #allows for 'assigns' in tests
+  gem 'rails-controller-testing'
+  gem 'letter_opener_web'
 end
 
 group :development do

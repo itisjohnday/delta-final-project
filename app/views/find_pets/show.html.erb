@@ -1,0 +1,11 @@
+<h1>Learn more about dog breeds:</h1>
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select Breed
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <%@breeds.each do |breed|%>
+      <a class="dropdown-item" href="http://www.akc.org/dog-breeds/<%=breed.downcase.tr!(" ", "-")%>"><%=breed%></a>
+    <%end%>
+  </div>
+</div>

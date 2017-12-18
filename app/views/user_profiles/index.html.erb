@@ -1,0 +1,31 @@
+<h3> current users </h3>
+
+<table class='table table-striped table-hover'>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>picture</th>
+      <th>pets</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user_profile_path(id: user.id) %></td>
+        <% if user.profile_pic != nil %>
+          <td>
+            <img src=<%= user.profile_pic %> /> 
+          </td>
+        <% end %>
+        <% user.pets.each do |pet| %>
+          <% if pet.profile_pic != nil %>
+          <td
+            <img src=<%= pet.profile_pic %> />
+          </td>
+        <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  <tbody>
+</table>

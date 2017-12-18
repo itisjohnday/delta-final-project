@@ -1,6 +1,11 @@
 Rails.application.configure do
+    # Verifies that versions and hashed value of the package contents in the project's package.json
+  config.webpacker.check_yarn_integrity = false
+
   # Settings specified here will take precedence over those in config/application.rb.
 
+  #store keys in encrypted file
+  config.read_encrypted_secrets = true
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -61,6 +66,9 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "detla-final-project_#{Rails.env}"
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.delivery_method = :stmp
+  config.action_mailer.default_url_options = { :host => 'http://tournapets.herokuapp.com/' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

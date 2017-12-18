@@ -1,0 +1,16 @@
+
+
+<%= javascript_pack_tag "application" %>
+
+<style>
+button, .face {
+  box-shadow: 0 7px 9px #999;
+  border-radius: 50%;
+}
+.face:active {
+  box-shadow: 0 3px 5px #666;
+  transform: translateY(4px);
+}
+</style>
+
+<%= react_component('image_scroller', props = {images: @media, auth: form_authenticity_token}, prerender: false) %>

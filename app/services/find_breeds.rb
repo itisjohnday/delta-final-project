@@ -20,10 +20,3 @@ class FindBreeds
       return breeds
   end
 end
-
-# Sample Usage:
-# <p><%=FindBreeds.new.get_breeds('dog')%></p>
-# <p><%=FindBreeds.new.get_breeds('cat')%></p>
-# <p><%=FindBreeds.new.get_breeds('reptile')%></p>
-# <p><%=FindBreeds.new.get_breeds('horse')%></p>
-# <p><%=FindBreeds.new.get_breeds('smallfurry')%></p>

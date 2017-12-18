@@ -1,6 +1,11 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+    # Verifies that versions and hashed value of the package contents in the project's package.json
+  config.webpacker.check_yarn_integrity = false
 
+  RAILS_ENV = 'development'
+  # Settings specified here will take precedence over those in config/application.rb.
+  # config.log_level = :debug
+  config.read_encrypted_secrets = true
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -26,6 +31,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -40,7 +47,7 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  # config.assets.debug = true
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
@@ -51,4 +58,7 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+
+
 end

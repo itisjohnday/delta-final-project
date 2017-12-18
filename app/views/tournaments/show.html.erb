@@ -1,0 +1,29 @@
+<div class='page-header'>
+  <h1><%= @tournament.theme %></h1>
+</div>
+
+<div class='row'>
+  <div class='col-lg-12'>
+    <% i = 0 %>
+    <% @tournament.rounds.each do |round| %>
+      <p> <%= round.name %> </p>
+      <% round.matches.each do |match| %>
+        <% if i == 0 %>
+          <%= "#{match.contestant_1.pet.name} : #{match.contestant_1.vote_count}" %>
+          <br/>
+        <% else %>
+          <%= "#{match.contestant_1.pet.name} : #{match.contestant_1.vote_count} VS #{match.contestant_2.pet.name} : #{match.contestant_2.vote_count}" %>
+          <br/>
+        <% end %>
+      <% end %>
+      <% i += 1 %>
+      <br/>
+    <% end %>
+    <h5>   <%= link_to 'Back to All Tournaments', tournaments_path %> </h5>
+  </div>
+</div>
+<div class='well'>
+  <%= link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-primary' %> |
+  <%= link_to 'Back', tournaments_path, class: 'btn btn-primary'  %> |
+  <%= link_to 'Seed Next Round', "/tournaments/#{@tournament.id}/set_next_round", method: :post, class: 'btn btn-primary'  %>
+</div>
