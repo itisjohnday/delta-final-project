@@ -22,9 +22,9 @@ class AboutController < ApplicationController
 
   def bracket
     @tournament = Tournament.find(1)
-    round = 1
+    last_round = @tournament.rounds.last
     @round_matches = @tournament.rounds.find(round).matches
-    p @around_matches
+    p @round_matches
     p @tournament
   end
 
