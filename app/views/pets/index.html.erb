@@ -32,8 +32,7 @@
     color: #757575;
   }
 
-
-  * {
+* {
     box-sizing: border-box;
 }
 
@@ -41,7 +40,6 @@ body {
     margin: 0;
     background-color: #fff;
 }
-
 
 .column {
     background-color: lightblue;
@@ -51,7 +49,6 @@ body {
     height: 700px; 
 }
 
-
 .columnPet {
     background-color: #fff;
     float: left;
@@ -59,7 +56,6 @@ body {
     padding: 10px;
     
 }
-
 
 .row:after {
     content: "";
@@ -74,15 +70,14 @@ body {
     padding: 35px;
 }
 
-
 h1 {
-  font: 400 100px/1.5 'Pacifico', Helvetica, sans-serif;
+  font: 300 75px/1.5 'Pacifico', Helvetica, sans-serif;
   color: #2b2b2b;
   text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
 }
 </style>
 
-
+<div class='container'>
 <div class='page-header'>
   <h1 align="center">ALL CURRENT PETS</h1>
 </div>
@@ -90,7 +85,7 @@ h1 {
   
    <tr>
     <td>
-      <%= link_to 'New pet', new_pet_path, class: 'btn btn-success btn-lg btn-block' %>
+      <%= link_to 'Add New Pet', new_pet_path, class: 'btn btn-success btn-lg btn-block' %>
       </td>
     </tr>
 
@@ -105,17 +100,13 @@ h1 {
         <div class="columnPet" style="background-color:#fff;">
            <div id="cardWrapper">
             <% if pet.profile_pic != nil %>         
-                <img src=<%= pet.profile_pic %> />
-
+                <img src=<%= pet.profile_pic %> >
 
                  <div id="cardContentContainer">
 
                   <h2> <%= link_to pet.name, pet_path(id: pet.id) %> </h2>
-                  <%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
-                  <%= link_to 'Delete', pet_path(id: pet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
 
                   <p> <%= pet.breed %> </p>
-                  <p>The sturdy Airedale is the largest of all terriers. Males stand about 23 inches at the shoulder; females are a bit smaller. The wire coat is tan with dark markings. Rangy but muscular legs give Airedales a regal lift in their bearing, and the long head—with its sporty beard and mustache. </p>
                   </div>
 
             </div>
@@ -132,3 +123,4 @@ h1 {
 </table>
 
 <br>
+</div>

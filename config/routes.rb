@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
+  root to: "about#index"
+
   get "/about" => "about#show"
   get "/search" => 'about#search'
   get '/prelim' => 'about#prelim'
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   post "/tournaments/:tournament_id/set_next_round" => "rounds#set_new_round"
 
 
-  root to: "about#index"
+  
 
   get "/find_pets" => "find_pets#index"
 
