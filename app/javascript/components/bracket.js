@@ -53,8 +53,9 @@ class bracket extends React.Component {
 
           if (Object.keys(this.state.data[round][0]).length > 5) {
             // console.log('last')
+            let contestant_2_name = this.state.data[round][index]['contestant_2']
             contestant_2 = (
-              <li className="game game-bottom ">{this.state.data[round][index]['contestant_2'] || " "}<span></span></li>);
+              <li className="game game-bottom ">{ contestant_2_name ? <a onClick={this.setState({popup: true})} href="">{contestant_2_name}</a> : null}<span></span></li>);
             spacer_game = (<li className="game game-spacer">&nbsp;</li>);
           }
 
@@ -88,8 +89,9 @@ class bracket extends React.Component {
     return (
         <div className="bracket">
           {test}
-          { this.state.popup? <MatchDisplay /> : null
-            
+          { this.state.popup ? 
+            <MatchDisplay setPupup={()=>this.setState({popup: !this.state.popup})} passDown={this.state.popup_data} /> 
+            : null
           }
         </div>
     );

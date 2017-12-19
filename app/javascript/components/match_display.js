@@ -9,6 +9,7 @@ class MatchDisplay extends React.Component {
 
 
   render () {
+    console.log(this.props.popup_data)
     return (
       <div className="match">
 
