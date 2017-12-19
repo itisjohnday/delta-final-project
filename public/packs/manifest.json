@@ -2,8 +2,8 @@
   "alex.jpg": "/packs/alex-06ae4b647a0a596f4856dd70354c2048.jpg",
   "application.css": "/packs/application-19d6f6a6be99c4f5dcc67aa50354cf04.css",
   "application.css.map": "/packs/application-19d6f6a6be99c4f5dcc67aa50354cf04.css.map",
-  "application.js": "/packs/application-2094641012f57f923438.js",
-  "application.js.map": "/packs/application-2094641012f57f923438.js.map",
+  "application.js": "/packs/application-7e514f3904541598d412.js",
+  "application.js.map": "/packs/application-7e514f3904541598d412.js.map",
   "components/images/bad_face.svg": "/packs/components/images/bad_face-e12428f4c5219e4def77e1752433f1d7.svg",
   "components/images/happy_face.svg": "/packs/components/images/happy_face-63aec521f4e0e5ff72f4ce4dba664cd7.svg",
   "components/images/ok_face.svg": "/packs/components/images/ok_face-740fdfdaaf228095e0d7e0df622c9b2c.svg",
@@ -13,6 +13,6 @@
   "puppy2.jpg": "/packs/puppy2-ed2a91c3133e6976f1894f4230fc2263.jpg",
   "server_rendering.css": "/packs/server_rendering-19d6f6a6be99c4f5dcc67aa50354cf04.css",
   "server_rendering.css.map": "/packs/server_rendering-19d6f6a6be99c4f5dcc67aa50354cf04.css.map",
-  "server_rendering.js": "/packs/server_rendering-34fd23b7ef2f47c9bc73.js",
-  "server_rendering.js.map": "/packs/server_rendering-34fd23b7ef2f47c9bc73.js.map"
+  "server_rendering.js": "/packs/server_rendering-789e1f100e9426af0551.js",
+  "server_rendering.js.map": "/packs/server_rendering-789e1f100e9426af0551.js.map"
 }
