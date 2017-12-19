@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from "prop-types"
 import puppy1 from './images/puppy1.jpeg';
 import puppy2 from './images/puppy2.jpg';
+import 'src/match_frame'
 
 class MatchDisplay extends React.Component {
 

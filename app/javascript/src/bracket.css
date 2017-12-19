@@ -1,4 +1,4 @@
-.bracket{
+ .bracket{
   display:flex;
   flex-direction:row;
   font-family:sans-serif;
@@ -7,7 +7,7 @@
   line-height:2em;
   margin-top: 90px;
 }
-.round{
+ .round{
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -16,41 +16,41 @@
   padding:0;
 }
 
-.match-div {
+ .match-div {
   flex: 1 0 auto;
   display:flex;
   flex-direction:column;
 
 
 }
-  .round .spacer{ flex: 1 0 100%;}
+   .round .spacer{ flex: 1 0 100%;}
 
-  .round li:first-of-type,
-  .round li:last-of-type{ flex: .5 0 100%; }
+   .round li:first-of-type,
+   .round li:last-of-type{ flex: .5 0 100%; }
 
-  .round .game-spacer{
+   .round .game-spacer{
     flex: 1 0 100%;
   }
 
-li.game{
+ li.game{
   padding-left:20px;
 }
 
-  li.game.winner{
+   li.game.winner{
     font-weight:bold;
   }
-  li.game span{
+   li.game span{
     float:right;
     margin-right:5px;
   }
 
-  li.game-top{ border-bottom:1px solid #aaa; }
+   li.game-top{ border-bottom:1px solid #aaa; }
 
-  li.game-spacer{ 
+   li.game-spacer{ 
     border-right:1px solid #aaa;
     min-height:40px;
   }
 
-  li.game-bottom{ 
+   li.game-bottom{ 
     border-top:1px solid #aaa;
   }

@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from 'react-dom'
 import PropTypes from "prop-types"
-import 'css/bracket.css'
+import 'src/bracket'
 import MatchDisplay from 'match_display'
 
 class bracket extends React.Component {
@@ -86,11 +86,12 @@ class bracket extends React.Component {
     console.log(this.state.data)
     const test = this.createRound();
     return (
-      <div className="bracket">
-        {test}
-        
-        
-      </div>
+        <div className="bracket">
+          {test}
+          { this.state.popup? <MatchDisplay /> : null
+            
+          }
+        </div>
     );
   }
 }
