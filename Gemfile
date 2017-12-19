@@ -61,6 +61,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'pry'
   gem 'letter_opener_web'
+  gem 'database_cleaner'
 end
 
 group :development do
