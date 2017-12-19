@@ -9,15 +9,15 @@ class MatchDisplay extends React.Component {
 
 
   render () {
-    console.log(this.props.popup_data)
+    // console.log(this.props.popup_data)
     return (
       <div className="match">
 
-      <h4 class ="header_vote"> Click to vote on the best!  </h4> 
-        <div class="grid-container">
-          <div class="one"> <p class="puppyname1"> <strong> Sam </strong> </p> <img src={puppy1} className="puppy1" alt="" /> <p class="vote1"> <strong> <a href="url">vote</a> </strong> </p> </div>
-          <div class="two"> <strong> <p className="vs" > VS </p> </strong> </div>
-          <div class="three"> <p class="vote1"> <strong> <a href="url">vote</a> </strong> </p> <img src={puppy2} className="puppy2"  alt="" /> <p class="puppyname2"> <strong> Grandpa </strong> </p></div>
+      <h4 className ="header_vote"> Click to vote on the best!  </h4> 
+        <div className="grid-container">
+          <div className="one"> <p className="puppyname1"> <strong> Sam </strong> </p> <img src={puppy1} className="puppy1" alt="" /> <p className="vote1"> <strong> <a href="url">vote</a> </strong> </p> </div>
+          <div className="two"> <strong> <p className="vs" > VS </p> </strong> </div>
+          <div className="three"> <p className="vote1"> <strong> <a href="url">vote</a> </strong> </p> <img src={puppy2} className="puppy2"  alt="" /> <p className="puppyname2"> <strong> Grandpa </strong> </p></div>
         </div>
 
       </div>
