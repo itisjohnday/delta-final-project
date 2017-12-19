@@ -1,8 +1,12 @@
 require 'rails_helper'
+require 'rake'
+
 
 RSpec.describe AboutController, type: :controller do
   render_views
   
+
+
   # let(:user) { User.create!(f_name: 'Paris', l_name: 'Hilton', username: 'philton', email:'paris@tournapets.com', password: 'tournapets') }
 
   # let(:tournament) {Tournament.create(theme: 'Cutest Puppy')}
@@ -29,13 +33,8 @@ RSpec.describe AboutController, type: :controller do
   # let(:round_2) {Round.create(tournament_id: 1, name: 'Championship')}
 
 
-  before { sign_in(User.first) }
+  # before { sign_in(User.first) }
 
-  describe "GET #bracket" do
-    it "should return a json type bracket" do
-      get :bracket, params: {}
-      expect(assigns(:pet)).to be_a_new(Pet)
-    end
-  end
+  
 
 end

@@ -59,7 +59,7 @@ class RoundsController < ApplicationController
           match_6_winner = @match6.contestant_2
         end
         @match7 = Match.create(round_id: @round.id, contestant_1_entry_id: match_5_winner.id, contestant_2_entry_id: match_6_winner.id)
-        redirect_to tournaments_path
+        # redirect_to tournaments_path
     end
     
     if @round.save
@@ -67,7 +67,7 @@ class RoundsController < ApplicationController
     else
       render :new
     end
-    render body: nil
+    # render body: nil
   end
 
   private

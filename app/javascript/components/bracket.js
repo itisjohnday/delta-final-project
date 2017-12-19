@@ -1,15 +1,18 @@
 import React from "react"
 import ReactDOM from 'react-dom'
 import PropTypes from "prop-types"
-
-
+import 'css/bracket.css'
+import MatchDisplay from 'match_display'
 
 class bracket extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       rounds: 4,
-      sample: {'round-1': {match1: [{name: 'fluffy'},{name: 'sharky'}], match2: [{name: 'snarles'},{name: 'gruff'}], match3: [{name: 'fluffy'},{name: 'sharky'}], match4: [{name: 'snarles'},{name: 'gruff'}]}, 'round-2': {match1: [{name:'fluffy'},{name:'gruff'}],match2: [{name:'fluffy'},{name:'gruff'}]}, 'round-3': {match1: [{name:'fluffy'},{name:'gruff'}]}, 'round-4': {match1: [{name:'fluffy'}]}}
+      sample: {'round-1': {match1: [{name: 'fluffy'},{name: 'sharky'}], match2: [{name: 'snarles'},{name: 'gruff'}], match3: [{name: 'fluffy'},{name: 'sharky'}], match4: [{name: 'snarles'},{name: 'gruff'}]}, 'round-2': {match1: [{name:'fluffy'},{name:'gruff'}],match2: [{name:'fluffy'},{name:'gruff'}]}, 'round-3': {match1: [{name:'fluffy'},{name:'gruff'}]}, 'round-4': {match1: [{name:'fluffy'}]}},
+      data: this.props.game,
+      popup: false,
+      popup_data: []
     }
 
   }
@@ -19,10 +22,10 @@ class bracket extends React.Component {
 
     // }
   // console.log(Object.keys(this.state.sample)) 
-    var output =Object.keys(this.state.sample).map((round, index, array) => {
-        // console.log(index)
+    var output =Object.keys(this.state.data).map((round, index, array) => {
+        // console.log(round)
         const output = (
-        <ul className="round"key={round.toString()}>
+        <ul className="round"key={round}>
           {this.createMatch(round)}
         </ul>
         )
@@ -34,7 +37,7 @@ class bracket extends React.Component {
   }
 
   createMatch(round) {
-    return Object.keys(this.state.sample[round]).map((match, index, whole_round)=>{
+    return Object.keys(this.state.data[round]).map((match, index, whole_round)=>{
           // console.log(this.state.sample[round][match])    
           console.log(whole_round)
           console.log(index)
@@ -48,17 +51,17 @@ class bracket extends React.Component {
               closing_li = (<li className="spacer">&nbsp;</li>);
             }
 
-          if (this.state.sample[round][match].length !== 1) {
+          if (Object.keys(this.state.data[round][0]).length > 5) {
             // console.log('last')
             contestant_2 = (
-              <li className="game game-bottom ">{this.state.sample[round][match][1]['name']}<span></span></li>);
+              <li className="game game-bottom ">{this.state.data[round][index]['contestant_2'] || " "}<span></span></li>);
             spacer_game = (<li className="game game-spacer">&nbsp;</li>);
           }
 
             let output = (
               <div className="match-div"key={match}>
                 <li className="spacer">&nbsp;</li>
-                <li className="game game-top">{this.state.sample[round][match][0]['name']}<span></span></li>
+                <li className="game game-top">{this.state.data[round][index]['contestant_1'] || " "}<span></span></li>
                 {spacer_game}
                 {contestant_2}
                 {closing_li}
@@ -80,16 +83,19 @@ class bracket extends React.Component {
 
 
   render () {
-    const sample = {match1: [{name: 'fluffy'},{name: 'sharky'}], match2: [{name: 'snarles'},{name: 'gruff'}]}
+    console.log(this.state.data)
     const test = this.createRound();
     return (
       <div className="bracket">
         {test}
-
+        
       </div>
     );
   }
 }
 
+bracket.propTypes = {
+  game: PropTypes.object
+};
 
 export default bracket

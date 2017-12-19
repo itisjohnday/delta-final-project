@@ -1,0 +1,18 @@
+{
+  "alex.jpg": "/packs/alex-06ae4b647a0a596f4856dd70354c2048.jpg",
+  "application.css": "/packs/application-d598dda1fb4eff9f85af9bac754ea3d6.css",
+  "application.css.map": "/packs/application-d598dda1fb4eff9f85af9bac754ea3d6.css.map",
+  "application.js": "/packs/application-a6a8bdaecb94f399da01.js",
+  "application.js.map": "/packs/application-a6a8bdaecb94f399da01.js.map",
+  "components/images/bad_face.svg": "/packs/components/images/bad_face-e12428f4c5219e4def77e1752433f1d7.svg",
+  "components/images/happy_face.svg": "/packs/components/images/happy_face-63aec521f4e0e5ff72f4ce4dba664cd7.svg",
+  "components/images/ok_face.svg": "/packs/components/images/ok_face-740fdfdaaf228095e0d7e0df622c9b2c.svg",
+  "image_scroll.js": "/packs/image_scroll-0a8e8ca5a1341c3cf822.js",
+  "image_scroll.js.map": "/packs/image_scroll-0a8e8ca5a1341c3cf822.js.map",
+  "puppy1.jpeg": "/packs/puppy1-ed690fd4b9e1439936c2f7e1db5c488d.jpeg",
+  "puppy2.jpg": "/packs/puppy2-ed2a91c3133e6976f1894f4230fc2263.jpg",
+  "server_rendering.css": "/packs/server_rendering-d598dda1fb4eff9f85af9bac754ea3d6.css",
+  "server_rendering.css.map": "/packs/server_rendering-d598dda1fb4eff9f85af9bac754ea3d6.css.map",
+  "server_rendering.js": "/packs/server_rendering-31c072aeb58733325473.js",
+  "server_rendering.js.map": "/packs/server_rendering-31c072aeb58733325473.js.map"
+}

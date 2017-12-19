@@ -1,6 +1,3 @@
-<%= javascript_pack_tag "application" %>
-
-<style>
 .bracket{
   display:flex;
   flex-direction:row;
@@ -37,7 +34,6 @@
 
 li.game{
   padding-left:20px;
-  min-height:1.5em
 }
 
   li.game.winner{
@@ -58,10 +54,3 @@ li.game{
   li.game-bottom{ 
     border-top:1px solid #aaa;
   }
-</style>
-
-<%= @game %>
-
-<div class="bracket">
-  <%= react_component('bracket', props = {game: @game}, prerender: false) %>
-</div>
