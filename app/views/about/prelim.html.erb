@@ -2,6 +2,7 @@
 
 <%= javascript_pack_tag "application" %>
 
+
 <style>
 button, .face {
   box-shadow: 0 7px 9px #999;
@@ -11,6 +12,53 @@ button, .face {
   box-shadow: 0 3px 5px #666;
   transform: translateY(4px);
 }
+
+.pet_table {
+   float:left;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tbody {
+    height: 40%;
+}
+
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+th {
+    background-color: #708090;
+    color: white;
+}
+
+
+tbody {
+    display:block;
+    height:370px;
+    overflow:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;/* even columns width , fix width of table too*/
+}
+
+table {
+    width:400px;
+}
+
+
 </style>
 
 <%= react_component('image_scroller', props = {images: @media, auth: form_authenticity_token}, prerender: false) %>
