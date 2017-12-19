@@ -5,6 +5,7 @@ import great from 'images/happy_face'
 import soso from 'images/bad_face'
 import okok from 'images/ok_face'
 import ImageDisplay from 'image_display'
+import TableDisplay from 'table_display'
 
 
 class ImageScroller extends React.Component {
@@ -26,7 +27,7 @@ fetch('http://localhost:3000/get_links', {
   headers: {
     'Content-Type': 'application/json',
   },
-  method: 'get' 
+  method: 'get'
 }).then((response) => {
   return response.json();
 }).then((json) => {
@@ -62,26 +63,36 @@ handleButton(event, pts) {
 }
 
 
+
   render () {
-    
+
     const display_image = this.state.links[0].link;
     const token = document.querySelector('meta[name="csrf-token"]').content;
     // console.log(this.props.auth.toString())
     console.log(token)
     const setImage = this.state.links[0].link;
     return (
-      <div className="container-fluid">
-        <div className="row justify-content-lg-center">
-          <div className="card" style={{width: 40 + 'em', border: 'none'}}>
-              <ImageDisplay image={setImage} />
-              <div className="row justify-content-lg-around">
-                <img onClick={(e)=> {this.handleButton(e, 0)}} className="face" src={soso} />
-                <img onClick={(e)=> {this.handleButton(e, 3)}} className="face" src={okok} />
-                <img onClick={(e)=> {this.handleButton(e, 5)}} className="face" src={great} />
-              </div>
+
+      <div className="container">
+         <div className="row justify-content-lg-center">
+           <div className="card" style={{width: 40 + 'em', border: 'none'}}>
+               <ImageDisplay image={setImage} />
+               <div className="row justify-content-lg-around">
+                 <img onClick={(e)=> {this.handleButton(e, 0)}} className="face" src={soso} />
+                 <img onClick={(e)=> {this.handleButton(e, 3)}} className="face" src={okok} />
+                 <img onClick={(e)=> {this.handleButton(e, 5)}} className="face" src={great} />
+               </div>
+           </div>
+
+           <div class="col-md">
+             <TableDisplay/>
           </div>
-        </div>
-      </div>
+
+
+         </div>
+
+    </div>
+
     );
   }
 }
