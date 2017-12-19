@@ -59,6 +59,7 @@ group :development, :test do
   #allows for 'assigns' in tests
   gem 'rails-controller-testing'
   gem 'letter_opener_web'
+  gem 'database_cleaner'
 end
 
 group :development do
