@@ -35,11 +35,11 @@ i = 1
   i += 1
 end
 
-tournament2 = Tournament.create(theme: 'Funniest Trick')
-new_round2 = Round.create(tournament_id: tournament2.id, name: 'Prelim Round')
-i = 1
-8.times do
-  new_entry2 = Entry.create(pets_media_link_id: i, vote_count: rand(20..100))
-  new_match2 = Match.create(round_id: new_round2.id, contestant_1_entry_id: new_entry2.id, contestant_2_entry_id: new_entry2.id)
-  i += 1
-end
+# tournament2 = Tournament.create(theme: 'Funniest Trick')
+# new_round2 = Round.create(tournament_id: tournament2.id, name: 'Prelim Round')
+# i = 1
+# 8.times do
+#   new_entry2 = Entry.create(pets_media_link_id: i, vote_count: rand(20..100))
+#   new_match2 = Match.create(round_id: new_round2.id, contestant_1_entry_id: new_entry2.id, contestant_2_entry_id: new_entry2.id)
+#   i += 1
+# end

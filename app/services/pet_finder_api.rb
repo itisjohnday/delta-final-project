@@ -1,4 +1,4 @@
-class PetFinderAPI
+exitclass PetFinderAPI
   def initialize
     @connection = self.create_connection
   end

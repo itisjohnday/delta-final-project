@@ -15,11 +15,9 @@ class AboutController < ApplicationController
   def return_links
     output_json = []
     Match.all.each do |current_match|
-      # current_match.vote_checks.each do |vote_check|
-        # if current_user.id != vote_check.user_id && current_match.id != vote_check.match_id
-          output_json.push({link: current_match.find_link, entry_id: current_match.contestant_1.id})
-        # end
-      # end
+      if VoteCheck.exists?(user_id: current_user.id, match_id: current_match.id)  == false
+        output_json.push({link: current_match.find_link, entry_id: current_match.contestant_1.id})
+      end
     end
     render json:output_json
   end
@@ -27,7 +25,13 @@ class AboutController < ApplicationController
   def prelim
     output_json = []
     Match.all.each do |current_match|
-      output_json.push({link: current_match.find_link, entry_id: current_match.contestant_1.id})
+      if current_user
+        if VoteCheck.exists?(user_id: current_user.id, match_id: current_match.id)  == false
+          output_json.push({link: current_match.find_link, entry_id: current_match.contestant_1.id})
+        else
+          #redirect_to no_entries_path
+        end
+      end
     end
     @media = output_json
   end
@@ -37,7 +41,10 @@ class AboutController < ApplicationController
   end
 
   def vote_reg
-    # binding.pry
+    entry = Entry.where(params[id: :entry])[0]
+    entry.vote_count += params[:vote]
+    entry.save
+    VoteCheck.create(user_id: current_user.id, match_id: entry.match.id)
     render body: nil
   end
 
