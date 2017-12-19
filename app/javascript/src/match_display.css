@@ -1,5 +1,11 @@
 .match {
-  width: 100%
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  background: white;
+  border: solid;
 
 }
 .puppy1 {
