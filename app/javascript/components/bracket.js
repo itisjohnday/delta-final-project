@@ -89,6 +89,7 @@ class bracket extends React.Component {
       <div className="bracket">
         {test}
         
+        
       </div>
     );
   }
