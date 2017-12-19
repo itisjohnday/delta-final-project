@@ -1,4 +1,4 @@
-exitclass PetFinderAPI
+class PetFinderAPI
   def initialize
     @connection = self.create_connection
   end
@@ -21,12 +21,13 @@ exitclass PetFinderAPI
   end
 
   def shelter_list_by_breed(animal_type, breed)
-    response = @connection.get "/shelter.listByBreed?key=6a644738df6b4fd6db637b75c7caa9a3&animal=#{animal_type}&breed=#{breed}format=json"
-    shelters_with_breed = []
-    response.body["petfinder"]["breeds"]["breed"].each do |value|
-      shelters_with_breed << value["$t"]
-    end
-    return shelters_with_breed
+    response = @connection.get "/shelter.listByBreed?key=6a644738df6b4fd6db637b75c7caa9a3&animal=#{animal_type}&breed=#{breed}&format=json"
+    # shelters_with_breed = []
+    response.body
+    # response.body["petfinder"]["breeds"]["breed"].each do |value|
+    #   shelters_with_breed << value["$t"]
+    # end
+    # return shelters_with_breed
   end
 
 #   shelter.listByBreed

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   root to: "about#index"
 
-  get "/find_pets" => "find_pets#show"
+  get "/find_pets" => "find_pets#index"
 
   get "/get_links" => "about#return_links"
 
