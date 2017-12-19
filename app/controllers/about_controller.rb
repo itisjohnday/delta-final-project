@@ -86,6 +86,7 @@ class AboutController < ApplicationController
   end
 
   def vote_reg
+    binding.pry
     entry = Entry.where(params[id: :entry])[0]
     entry.vote_count += params[:vote]
     entry.save

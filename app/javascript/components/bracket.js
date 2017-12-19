@@ -9,10 +9,10 @@ class bracket extends React.Component {
     super(props);
     this.state = {
       rounds: 4,
-      sample: {'round-1': {match1: [{name: 'fluffy'},{name: 'sharky'}], match2: [{name: 'snarles'},{name: 'gruff'}], match3: [{name: 'fluffy'},{name: 'sharky'}], match4: [{name: 'snarles'},{name: 'gruff'}]}, 'round-2': {match1: [{name:'fluffy'},{name:'gruff'}],match2: [{name:'fluffy'},{name:'gruff'}]}, 'round-3': {match1: [{name:'fluffy'},{name:'gruff'}]}, 'round-4': {match1: [{name:'fluffy'}]}},
       data: this.props.game,
       popup: false,
-      popup_data: {}
+      popup_data: {},
+      token: this.props.auth
     }
 
   }
@@ -96,7 +96,7 @@ class bracket extends React.Component {
     const test = this.createRound();
     let popup;
     if (this.state.popup === true) {
-      popup = <MatchDisplay popup_state={()=>{this.setState({popup: !this.state.popup})}} popup_data={this.state.popup_data}/>
+      popup = <MatchDisplay popup_state={()=>{this.setState({popup: !this.state.popup})}} popup_data={this.state.popup_data} auth_token={this.state.token}/>
     }
     return (
         <div className="bracket">
@@ -108,7 +108,8 @@ class bracket extends React.Component {
 }
 
 bracket.propTypes = {
-  game: PropTypes.object
+  game: PropTypes.object,
+  auth: PropTypes.string
 };
 
 export default bracket
