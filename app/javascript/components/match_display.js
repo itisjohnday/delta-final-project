@@ -20,14 +20,33 @@ class MatchDisplay extends React.Component {
     };
   }
 
-  vote(event){
-    this.props.popup_state()
+  sendResult(entry_id, pts) {
+  // console.log(JSON.stringify({entry: this.state.links[0].entry_id, vote: pts}))
+  fetch('http://localhost:3000/vote_reg', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': this.props.auth_token
+    },
+    body: JSON.stringify({entry: entry_id, vote: pts})
+  }).then((response) => {
+    console.log(response);
+  })
+
+  }
+
+  vote(event, entry_id){
     event.preventDefault()
+    // console.log(this.props.auth_token)
+    this.sendResult(entry_id, 1)
+    this.props.popup_state()
+    
   }
 
   render () {
     
-    console.log(this.props.popup_data['contestant_1_prof_pic: '])
+    // console.log(this.props.popup_data['contestant_1_prof_pic: '])
     return (
       <div className="match">
 
@@ -39,7 +58,7 @@ class MatchDisplay extends React.Component {
             </p> 
             <img src={this.state.contestant_1_entry_pic} className="puppy1" alt="" /> 
             <p className="vote1"> 
-              <strong> <a href="url" onClick={(e)=>{this.vote(e)}}>vote</a> </strong> 
+              <strong> <a href="url" onClick={(e)=>{this.vote(e, this.state.contestant_1_entry_id)}}>vote</a> </strong> 
             </p> 
           </div>
           <div className="two"> 
@@ -47,7 +66,7 @@ class MatchDisplay extends React.Component {
           </div>
           <div className="three"> 
             <p className="vote1"> 
-              <strong> <a href="url" onClick={(e)=>{this.vote(e)}}>vote</a> </strong> 
+              <strong> <a href="url" onClick={(e)=>{this.vote(e, this.state.contestant_1_entry_id)}}>vote</a> </strong> 
             </p> 
             <img src={this.state.contestant_2_entry_pic} className="puppy2"  alt="" /> 
             <p className="puppyname2"> 
