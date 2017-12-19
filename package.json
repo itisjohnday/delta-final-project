@@ -16,10 +16,5 @@
     "webpack-dev-server": "^2.9.7"
   },
   "engines" : { "yarn": "1.3.2" },
-  "scripts": {
-    "build": "webpack && NODE_ENV=production webpack -p"
-  },
-  "scripts": {
-  "start": "node server.js"
-}
+  "start": "babel-node server-express.js",
 }
