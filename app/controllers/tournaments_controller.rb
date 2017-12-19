@@ -19,7 +19,7 @@ class TournamentsController < ApplicationController
     
     
     if @tournament.save
-      redirect_to pets_path, notice: 'pet was successfully created.'
+      redirect_to pets_path, notice: 'Tournament was successfully created.'
     else
       render :new
     end
@@ -30,7 +30,7 @@ class TournamentsController < ApplicationController
 
   def update
     if @tournament.update(tournament_params)
-      redirect_to tournaments_path, notice: 'tournament was successfully updated.'
+      redirect_to tournaments_path, notice: 'Tournament was successfully updated.'
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class TournamentsController < ApplicationController
 
   def destroy
     @tournament.destroy
-    redirect_to tournaments_path, notice: 'tournament was successfully removed'
+    redirect_to tournaments_path, notice: 'Tournament was successfully removed'
   end
 
   def enter_tournament(pets_media_link_id)
