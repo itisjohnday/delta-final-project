@@ -39,10 +39,9 @@ gem 'devise'
 
 #placing in prod in case we need online testing
 gem 'faker'
-
+gem 'json'
 gem 'faraday'
 gem 'faraday_middleware'
-gem 'json'
 gem 'aws-sdk-s3'
 
 gem 'jquery-rails'
@@ -56,10 +55,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
-
+  gem 'pry'
   #allows for 'assigns' in tests
   gem 'rails-controller-testing'
-  gem 'pry'
   gem 'letter_opener_web'
   gem 'database_cleaner'
 end

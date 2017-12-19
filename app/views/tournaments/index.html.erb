@@ -1,11 +1,12 @@
+<div class='container'
 <div class='page-header'>
   <h1>All Current Tournaments</h1>
-</div>
 
-<table class='table table-striped table-hover'>
+<table class='table table-striped table-hover' border=faded>
   <thead>
     <tr>
       <th>Theme</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -16,20 +17,20 @@
           <td>
             <% if current_user %>
               <%= link_to 'Enter Tournament', tournament_rounds_path(tournament_id: tournament.id) %> |
+              <%= link_to 'VOTE!', prelim_path(tournament_id: tournament.id) %> |
             <% end%>
-            <% #if admin login %>
+            <% if current_user #if admin login %>
               <%= link_to 'Edit', edit_tournament_path(id: tournament.id) %> |
               <%= link_to 'Destroy', tournament_path(id: tournament.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
             <% #end admin login check %>
           </td>
         </td>
       </tr>
     <% end %>
-    <tr>
-      <td>
-        <%= link_to 'New Tournament', new_tournament_path, class: 'btn btn-primary' %>
-      </td>
-    </tr>
   </tbody>
 </table>
+<%= link_to 'New Tournament', new_tournament_path, class: 'btn btn-primary' %>
 <br>
+</div>
+git 
