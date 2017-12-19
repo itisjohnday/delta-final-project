@@ -2,6 +2,15 @@
   "alex.jpg": "/packs/alex-06ae4b647a0a596f4856dd70354c2048.jpg",
   "application.css": "/packs/application-eacb8066888b1b474ccca27290feeb23.css",
   "application.css.map": "/packs/application-eacb8066888b1b474ccca27290feeb23.css.map",
+<<<<<<< HEAD
+  "application.js": "/packs/application-22b9c73a95eb1c45e279.js",
+  "application.js.map": "/packs/application-22b9c73a95eb1c45e279.js.map",
+  "components/images/bad_face.svg": "/packs/components/images/bad_face-e12428f4c5219e4def77e1752433f1d7.svg",
+  "components/images/happy_face.svg": "/packs/components/images/happy_face-63aec521f4e0e5ff72f4ce4dba664cd7.svg",
+  "components/images/ok_face.svg": "/packs/components/images/ok_face-740fdfdaaf228095e0d7e0df622c9b2c.svg",
+  "image_scroll.js": "/packs/image_scroll-af3b7a504717f56468ce.js",
+  "image_scroll.js.map": "/packs/image_scroll-af3b7a504717f56468ce.js.map",
+=======
   "application.js": "/packs/application-92ab07aa709ca9e5f298.js",
   "application.js.map": "/packs/application-92ab07aa709ca9e5f298.js.map",
   "components/images/bad_face.svg": "/packs/components/images/bad_face-e12428f4c5219e4def77e1752433f1d7.svg",
@@ -9,10 +18,16 @@
   "components/images/ok_face.svg": "/packs/components/images/ok_face-740fdfdaaf228095e0d7e0df622c9b2c.svg",
   "image_scroll.js": "/packs/image_scroll-08f20d43e43e0527525d.js",
   "image_scroll.js.map": "/packs/image_scroll-08f20d43e43e0527525d.js.map",
+>>>>>>> d140315e6322470ecf2832729fd2d027d726d330
   "puppy1.jpeg": "/packs/puppy1-ed690fd4b9e1439936c2f7e1db5c488d.jpeg",
   "puppy2.jpg": "/packs/puppy2-ed2a91c3133e6976f1894f4230fc2263.jpg",
   "server_rendering.css": "/packs/server_rendering-eacb8066888b1b474ccca27290feeb23.css",
   "server_rendering.css.map": "/packs/server_rendering-eacb8066888b1b474ccca27290feeb23.css.map",
+<<<<<<< HEAD
+  "server_rendering.js": "/packs/server_rendering-37a22b2b0823608b7308.js",
+  "server_rendering.js.map": "/packs/server_rendering-37a22b2b0823608b7308.js.map"
+=======
   "server_rendering.js": "/packs/server_rendering-35e65a20632e942df5bc.js",
   "server_rendering.js.map": "/packs/server_rendering-35e65a20632e942df5bc.js.map"
+>>>>>>> d140315e6322470ecf2832729fd2d027d726d330
 }
