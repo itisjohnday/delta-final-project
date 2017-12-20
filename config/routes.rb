@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
+  root to: "about#index"
+
   get "/about" => "about#show"
   get "/search" => 'about#search'
   get '/prelim' => 'about#prelim'
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   get "/tournaments/:id/reset" => 'tournaments#reset'
 
 
-  root to: "about#index"
+  
 
   get "/find_pets" => "find_pets#index"
 
