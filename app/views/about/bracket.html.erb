@@ -60,9 +60,14 @@ li.game{
     border-top:1px solid #aaa;
   }
 </style> -->
+<!-- <style>
+.contest_page {
+  position: relative;
+}
+</style> -->
 
 <!-- <%= @game %> -->
 
-<div class="bracket">
+<div class="contest_page">
   <%= react_component('bracket', props = {game: @game, auth: form_authenticity_token}, prerender: false) %>
-</div>
+<div>
