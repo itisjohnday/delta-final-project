@@ -17,8 +17,8 @@ class TableDisplay extends React.Component {
  }
 
 getScores() {
-  console.log(fetching)
-fetch('http://localhost:3000/get_links', {
+  console.log('fetching')
+fetch('http://localhost:3000/current_scores', {
   headers: {
     'Content-Type': 'application/json',
   },
@@ -27,11 +27,12 @@ fetch('http://localhost:3000/get_links', {
   return response.json();
 }).then((json) => {
   this.setState({petArrayReal: json})
+  console.log(json)
 })
 }
 
 componentDidMount() {
-        setTimeout(this.getScore, 3000);
+        setInterval(this.getScores.bind(this), 10000);
 }
 
  renderPet(pet, index) {
@@ -45,6 +46,8 @@ componentDidMount() {
 
 
   render () {
+
+    // setTimeout(this.getScores, 3000);
     return (
       <div className="table_display" >
 
@@ -56,7 +59,7 @@ componentDidMount() {
             </tr>
           </thead>
           <tbody>
-            {this.state.petArray.map(this.renderPet)}
+            {this.state.petArrayReal.map(this.renderPet)}
           </tbody>
         </table>
 

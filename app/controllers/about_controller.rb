@@ -11,7 +11,8 @@ class AboutController < ApplicationController
     @pets = Pet.where(name: params['search'])
     @users = User.where(username: params['search'])
   end
-
+  
+  #preliminary round pictures api
   def return_links
     output_json = []
     Match.all.each do |current_match|
@@ -23,7 +24,7 @@ class AboutController < ApplicationController
     render json:output_json
   end
 
-  #preliminary round pictures api
+  
   def prelim
     p params
     output_json = []
