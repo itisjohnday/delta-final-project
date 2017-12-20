@@ -6,6 +6,7 @@
     "babel-preset-react": "^6.24.1",
     "coffeescript": "1.12.7",
     "css-loader": "^0.28.7",
+    "postcss-smart-import": "^0.7.6",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

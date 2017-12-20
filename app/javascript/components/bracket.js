@@ -32,8 +32,10 @@ class bracket extends React.Component {
         // console.log(output);
         return output;
     });
-
-    return output
+ 
+    const test = React.createElement('div',{className: 'bracket'},output)
+    console.log(test)
+    return test
   }
 
   createMatch(round) {
@@ -99,7 +101,7 @@ class bracket extends React.Component {
       popup = <MatchDisplay popup_state={()=>{this.setState({popup: !this.state.popup})}} popup_data={this.state.popup_data} auth_token={this.state.token}/>
     }
     return (
-        <div className="bracket">
+        <div>
           {test}
           {popup}
         </div>
