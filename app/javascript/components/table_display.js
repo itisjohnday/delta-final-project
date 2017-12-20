@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from 'react-dom'
 import PropTypes from "prop-types"
+import 'src/score_board'
 
 
 class TableDisplay extends React.Component {
@@ -9,10 +10,24 @@ class TableDisplay extends React.Component {
    super(props)
    this.state = {
    // array with names and points
-    petArray: [ {name:"Billy" ,points: 90} , {name:"John", points:50} ,{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Dej", points: 200},{name: "Da", points: 200}, {name: "D", points: 200}, {name: "Deja", points: 200}, {name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200}]
+    petArray: [ {name:"Billy" ,points: 90} , {name:"John", points:50} ,{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Dej", points: 200},{name: "Da", points: 200}, {name: "D", points: 200}, {name: "Deja", points: 200}, {name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200}],
+    petArrayReal: []
 
    }
  }
+
+getMore() {
+fetch('http://localhost:3000/get_links', {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  method: 'get'
+}).then((response) => {
+  return response.json();
+}).then((json) => {
+  this.add_links(json);
+})
+}
 
  renderPet(pet, index) {
    return (
@@ -28,7 +43,7 @@ class TableDisplay extends React.Component {
     return (
       <div className="table_display" >
 
-        <table striped condensed hover>
+        <table className="striped condensed hover">
           <thead>
             <tr>
               <th>Pet Name</th>
