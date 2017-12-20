@@ -1,10 +1,8 @@
 <div class ='container'>
   <img src=<%= @pet.profile_pic %> />
   <h1> <%= @pet.name %> </h1>
-  <p>Breed: <%= @pet.breed %></p></center>
-  <%= logged link_to 'Edit', edit_pet_path(@pet), class: 'btn btn-primary' %> |
-  <%= link_to 'Delete', pet_path(@pet), class: 'btn btn-primary', method: :delete, data: { confirm: 'Are you sure?' } %> |
-  <%= link_to 'Back', pets_path, class: 'btn btn-primary' %> 
+  <p> <%= @pet.breed %> </p>
+  <p> <%= link_to 'Back', pets_path, class: 'btn btn-primary' %> </p>
 </div>
 
 <div class='container'>

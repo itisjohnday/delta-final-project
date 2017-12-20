@@ -3,11 +3,11 @@
   <% if @user.profile_pic %> 
     <img src=<%= @user.profile_pic %> />
   <% end %>
-  <h3>Name: <%="#{@user.f_name} #{@user.l_name}"%></h3>
-  <h3>Username: <%=@user.username%></h3>
-  <h3>Email: <%=@user.email%></h3> <br>
-  <%= link_to 'Edit Account Information', edit_user_registration_path, class: 'btn btn-primary' %>
-  <%= link_to 'Add a new pet', new_pet_path, class: 'btn btn-primary' %>
+  <h4> Name: <%="#{@user.f_name} #{@user.l_name}"%></h4>
+  <h4> Username: <%=@user.username%></h4>
+  <h4> Email: <%=@user.email%></h4>
+  <h4> <%= link_to 'Edit Account Information', edit_user_registration_path, class: 'btn btn-primary' %>
+  <%= link_to 'Add a new pet', new_pet_path, class: 'btn btn-primary' %> </h4>
 </div>
 
 <div class="container">
@@ -19,12 +19,11 @@
               <% if pet.profile_pic != nil %>         
                 <img class="align-self-center" style="height:300px" src=<%= pet.profile_pic %> />
               <% end %>
-              <div class="container" id="cardContentContainer">
+              <div class="container">
                 <p> Tag <%= check_box_tag 'pets[]', pet.id%> </p>
                 <h4> <%= link_to pet.name, pet_path(id: pet.id) %> </h4>
                 <p> <%= pet.breed %> </p>
-                <%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
-                
+                <p> <%= link_to 'Edit', edit_pet_path(id: pet.id), class: 'btn btn-primary' %> </p>
               </div>
             </div>
           </div>
