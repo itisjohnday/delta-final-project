@@ -10,12 +10,15 @@
 </div>
 
 <div class="container">
+  <%= link_to 'Add a new pet', new_pet_path, class: 'btn btn-primary' %>
+</div>
+
+<div class="container">
   <%= form_tag user_profile_media_links_path(user_profile_id: current_user.id), enctype: 'multipart/form-data' do %>
-    <%= link_to 'Add a new pet', new_pet_path, class: 'btn btn-primary' %>
+    
     <div class="row">
-      <table class='table table-striped table-hover'>
-        <tbody>
-          <% @pets.each do |pet| %>
+      <% i = 0 %>
+      <% @pets.each do |pet| %>
             <tr>
               <div class="column" style="background-color:#fff;">
                 <div id="cardWrapper">
@@ -34,7 +37,7 @@
                   <% end %>
                 </div>
               </div>
-            </tr>
+            <% i += 1 %>
           <% end %>
         </tbody>
       </table>
