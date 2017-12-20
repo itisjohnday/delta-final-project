@@ -25,11 +25,11 @@ class AboutController < ApplicationController
   #preliminary round pictures api
   def prelim
     output_json = []
-    Match.all.each do |current_match|
+    @tournament.rounds.first.matches.each do |match|
       if current_user
-        if VoteCheck.exists?(user_id: current_user.id, match_id: current_match.id)  == false
+        if VoteCheck.exists?(user_id: current_user.id, match_id: match.id) == false
           # binding.pry
-          output_json.push({link: current_match.find_link, entry_id: current_match.contestant_1.id})
+          output_json.push({link: match.find_link, entry_id: match.contestant_1.id})
         end
       end
     end
@@ -39,6 +39,15 @@ class AboutController < ApplicationController
     else
       @media = output_json
     end
+  end
+
+  def vote_reg
+    entry = Entry.where(params[id: :entry])[0]
+    entry.vote_count += params[:vote]
+    entry.save
+    VoteCheck.create(user_id: current_user.id, match_id: entry.match.id)
+    # binding.pry
+    render body: nil
   end
 
   def bracket
@@ -59,14 +68,7 @@ class AboutController < ApplicationController
     render json: [{link: "hahhaha", key: "1"}]
   end
 
-  def vote_reg
-    entry = Entry.where(params[id: :entry])[0]
-    entry.vote_count += params[:vote]
-    entry.save
-    VoteCheck.create(user_id: current_user.id, match_id: entry.match.id)
-    # binding.pry
-    render body: nil
-  end
+  
 
   def no_entries
   end
@@ -79,6 +81,7 @@ class AboutController < ApplicationController
       points: match.contestant_1.vote_count
       }
     end
+    #need to sort output by points 
     render json: output
   end
 

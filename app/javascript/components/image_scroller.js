@@ -6,6 +6,8 @@ import soso from 'images/bad_face'
 import okok from 'images/ok_face'
 import ImageDisplay from 'image_display'
 import TableDisplay from 'table_display'
+// import { Redirect, BrowserRouter as Router} from 'react-router-dom'
+
 
 
 class ImageScroller extends React.Component {
@@ -35,6 +37,10 @@ fetch('http://localhost:3000/get_links', {
 })
 }
 
+noMore() {
+  window.location.href = '/no_entries'
+}
+
 sendResult(pts) {
   // console.log(JSON.stringify({entry: this.state.links[0].entry_id, vote: pts}))
   fetch('http://localhost:3000/vote_reg', {
@@ -55,22 +61,22 @@ handleButton(event, pts) {
   // console.log(pts)
   event.preventDefault()
   this.sendResult(pts)
-  this.setState({links: this.state.links.slice(1)})
-  if (this.state.links.length == 2) {
-    this.getMore()
+  this.state.links.shift()
+  // console.log(this.state.links)
+  this.setState({links: this.state.links})
+  if (this.state.links.length == 0) {
+    this.noMore()
   }
-
 }
 
 
 
   render () {
 
-    const display_image = this.state.links[0].link;
-    const token = document.querySelector('meta[name="csrf-token"]').content;
-    // console.log(this.props.auth.toString())
-    console.log(token)
-    const setImage = this.state.links[0].link;
+    let setImage;
+    if (this.state.links.length > 0) {
+      setImage = this.state.links[0].link;
+    }
     return (
 
       <div className="container">
