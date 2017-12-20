@@ -17,8 +17,6 @@ class MediaLinksController < ApplicationController
   end
 
   def create
-    
-    binding.pry
     # Make an object in your bucket for your upload
     # obj = .objects[params[:file].original_filename] 
     filename = current_user.username + rand(100000000..999999999).to_s + params[:file].original_filename

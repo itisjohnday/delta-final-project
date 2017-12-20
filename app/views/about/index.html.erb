@@ -24,7 +24,7 @@
 }
 
 h3 {
-  font: 100 150px/1.5 'Pacifico', Helvetica, sans-serif;
+  font: 100 100px/1.5 'Pacifico', Helvetica, sans-serif;
   color: #2b2b2b; font-weight: bold;
   text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
 }
@@ -36,26 +36,25 @@ h4 {
   text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
 }
 
+body {
+  background-color: black
+}
+
 </style>
 
 
 </head>
 <body>
   <header class="v-header container">
-    <div class="fullscreen-video-wrap">
-     
+    <div class="fullscreen-video-wrap center">
       <%= video_tag "doggy_resize.mp4",  :controls => false, :autoplay => true, :loop => true %>
-      </video>
     </div>
 
     <div class="header-overlay"></div>
     <div class="header-content">
       <h3 style="color:#95B9C7;">TournaPets</h3><br>
-
-      <h4 style="color:#FDEEF4;"> All your Instagram followers know your dog is extremely talented and cute. <br>It's time to test that out!</br>  </h4>
-      
       <%= link_to 'Start', pets_path, class: 'btn' %>
-     
+      <h4 style="color:#FDEEF4;"> All your Instagram followers know your dog is extremely talented and cute. It's time to test that out!</br>  </h4>
     </div>
 
   </header>
