@@ -47,17 +47,21 @@ class TournamentsController < ApplicationController
 
   def reset
     @tournament.rounds.each_with_index do |round, index|
-      binding.pry
       if index > 0
         round.matches.each do |match|
-          match.vote_checks.destroy
           match.contestant_1 ? match.contestant_1.destroy : nil
           match.contestant_2 ? match.contestant_2.destroy : nil
           match.destroy
         end
         round.destroy
+      else
+        round.matches.each do |match|
+          match.contestant_1.update(vote_count: 0) 
+          match.contestant_2.update(vote_count: 0)
+        end
       end
     end
+    VoteCheck.delete_all
     redirect_to tournaments_path
   end
 

@@ -17,8 +17,9 @@
           <td>
             <% if current_user %>
               <%= link_to 'Enter Tournament', tournament_rounds_path(tournament_id: tournament.id) %> |
-              <%= link_to 'VOTE!', prelim_path(tournament_id: tournament.id) %>
+              <%= link_to 'VOTE!', tournament.rounds.count > 1 ? "bracket/#{tournament.id}" : "prelim/#{tournament.id}" %>
               <% if current_user.id == 1  %>
+                | <%= link_to "Reset", controller: "tournaments", action: "reset", id: tournament.id %> 
                 | <%= link_to 'Edit', edit_tournament_path(id: tournament.id) %> |
                 <%= link_to 'Delete', tournament_path(id: tournament.id), method: :delete, data: { confirm: 'Are you sure?' } %> 
               <%end%>

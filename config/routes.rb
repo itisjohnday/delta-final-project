@@ -6,13 +6,13 @@ Rails.application.routes.draw do
 
   get "/about" => "about#show"
   get "/search" => 'about#search'
-  get '/prelim' => 'about#prelim'
+  get '/prelim/:id' => 'about#prelim'
   get '/dummyjson' => 'about#dummyjson'
   get "/get_links" => "about#return_links"
   get "/no_entries" => "about#no_entries"
   get "/match_frame" => "about#match_frame"
   post "/vote_reg" => "about#vote_reg"
-  get '/bracket' => 'about#bracket'
+  get 'bracket/:id' => 'about#bracket'
   get '/current_scores' => 'about#current_scores'
 
   post "/tournaments/:tournament_id/set_next_round" => "rounds#set_new_round"
