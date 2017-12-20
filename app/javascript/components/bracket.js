@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import 'src/bracket'
 import MatchDisplay from 'match_display'
 
+
 class bracket extends React.Component {
   constructor(props){
     super(props);
@@ -23,7 +24,7 @@ class bracket extends React.Component {
         const output = React.createElement('ul',{className: 'round', key: round},this.createMatch(round, round_num))
         return output;
     });
- 
+
     const wrapped = React.createElement('div',{className: 'bracket'},output)
     // console.log(test)
     return wrapped
@@ -33,18 +34,18 @@ class bracket extends React.Component {
     console.log(this.state.data[round])
     // return Object.keys
     return this.state.data[round].map((match, index, whole_round)=>{
-          // console.log(this.state.sample[round][match])    
+          // console.log(this.state.sample[round][match])
           // console.log(whole_round)
           // console.log(index)
 
-          let closing_li; 
+          let closing_li;
           let contestant_2;
           let spacer_game;
-          const contestant_2_name = this.state.data[round][index]['contestant_2'] 
-          const contestant_1_name = this.state.data[round][index]['contestant_1'] 
+          const contestant_2_name = this.state.data[round][index]['contestant_2']
+          const contestant_1_name = this.state.data[round][index]['contestant_1']
           const popup_data = this.state.data[round][index]
 
-          if ( index === whole_round.length - 1) { 
+          if ( index === whole_round.length - 1) {
               closing_li = (<li className="spacer">&nbsp;</li>);
             }
 
@@ -53,7 +54,7 @@ class bracket extends React.Component {
             spacer_game = (<li className="game game-spacer">&nbsp;</li>);
             contestant_2 = (
               <li className="game game-bottom"><a href="" onClick={(event)=>{this.setPopup(event, popup_data)}}>{ contestant_2_name || " "}</a><span></span></li>);
-            
+
           }
 
             let output = (
@@ -66,7 +67,7 @@ class bracket extends React.Component {
               </div>
             )
             // console.log(output)
-            
+
             return output;
         });
   }
@@ -81,10 +82,17 @@ class bracket extends React.Component {
 
   setPopup(event, popup_data) {
     // console.log('fadsfadsfasdfsdf')
-    this.setState({popup: true, popup_data: popup_data})
+    if (this.state.popup === true) {
+      this.setState({popup: false, popup_data: {}})
+    }
+    else {
+      this.setState({popup: true, popup_data: popup_data})
+    }
+
     // console.log(popup_data)
     event.preventDefault()
   }
+
 
 
   render () {
