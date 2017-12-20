@@ -20,6 +20,7 @@
               <%= link_to 'VOTE!', prelim_path(tournament_id: tournament.id) %> |
             <% end%>
             <% if current_user #if admin login %>
+              <%= link_to "reset", controller: "tournaments", action: "reset", id: tournament.id %> |
               <%= link_to 'Edit', edit_tournament_path(id: tournament.id) %> |
               <%= link_to 'Destroy', tournament_path(id: tournament.id), method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>

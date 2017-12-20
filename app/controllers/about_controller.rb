@@ -15,6 +15,7 @@ class AboutController < ApplicationController
   def return_links
     output_json = []
     Match.all.each do |current_match|
+      # binding.pry
       if VoteCheck.exists?(user_id: current_user.id, match_id: current_match.id)  == false
         output_json.push({link: current_match.find_link, entry_id: current_match.contestant_1.id})
       end
@@ -24,6 +25,7 @@ class AboutController < ApplicationController
 
   #preliminary round pictures api
   def prelim
+    p params
     output_json = []
     @tournament.rounds.first.matches.each do |match|
       if current_user
@@ -42,11 +44,13 @@ class AboutController < ApplicationController
   end
 
   def vote_reg
-    entry = Entry.where(params[id: :entry])[0]
+    p params
+    entry = Entry.where(id: params[:entry])[0]
     entry.vote_count += params[:vote]
     entry.save
-    VoteCheck.create(user_id: current_user.id, match_id: entry.match.id)
+    vote = VoteCheck.find_or_create_by(user_id: current_user.id, match_id: entry.match.id)
     # binding.pry
+    p vote
     render body: nil
   end
 

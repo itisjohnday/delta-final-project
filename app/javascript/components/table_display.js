@@ -16,7 +16,8 @@ class TableDisplay extends React.Component {
    }
  }
 
-getMore() {
+getScores() {
+  console.log(fetching)
 fetch('http://localhost:3000/get_links', {
   headers: {
     'Content-Type': 'application/json',
@@ -25,8 +26,12 @@ fetch('http://localhost:3000/get_links', {
 }).then((response) => {
   return response.json();
 }).then((json) => {
-  this.add_links(json);
+  this.setState({petArrayReal: json})
 })
+}
+
+componentDidMount() {
+        setTimeout(this.getScore, 3000);
 }
 
  renderPet(pet, index) {

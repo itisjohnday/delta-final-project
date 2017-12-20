@@ -58,7 +58,7 @@ sendResult(pts) {
 }
 
 handleButton(event, pts) {
-  // console.log(pts)
+  // console.log(pts) 
   event.preventDefault()
   this.sendResult(pts)
   this.state.links.shift()
@@ -72,7 +72,6 @@ handleButton(event, pts) {
 
 
   render () {
-
     let setImage;
     if (this.state.links.length > 0) {
       setImage = this.state.links[0].link;
