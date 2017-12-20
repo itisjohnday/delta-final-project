@@ -46,6 +46,22 @@ class TournamentsController < ApplicationController
     Match.create!(contestant_1_entry_id: entry.id, contestant_2_entry_id: entry.id, round_id: 1)
   end
 
+  def reset
+    @tournament.rounds.each_with_index do |round, index|
+      binding.pry
+      if index > 0
+        round.matches.each do |match|
+          match.vote_checks.destroy
+          match.contestant_1 ? match.contestant_1.destroy : nil
+          match.contestant_2 ? match.contestant_2.destroy : nil
+          match.destroy
+        end
+        round.destroy
+      end
+    end
+    redirect_to tournaments_path
+  end
+
   private
   def tournament_params  
     params['tournament'].permit(:theme)
