@@ -32,7 +32,7 @@ fetch('http://localhost:3000/current_scores', {
 }
 
 componentDidMount() {
-        setInterval(this.getScores.bind(this), 10000);
+        setInterval(this.getScores.bind(this), 5000);
 }
 
  renderPet(pet, index) {
