@@ -8,7 +8,7 @@ class bracket extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      rounds: 4,
+      rounds: 5,
       data: this.props.game,
       popup: false,
       popup_data: {},
@@ -18,28 +18,21 @@ class bracket extends React.Component {
   }
 
   createRound() {
-    // for (let i = 1; i <= this.state.rounds; i++) {
 
-    // }
-  // console.log(Object.keys(this.state.sample)) 
-    var output =Object.keys(this.state.data).map((round, index, array) => {
-        // console.log(round)
-        const output = (
-        <ul className="round"key={round}>
-          {this.createMatch(round)}
-        </ul>
-        )
-        // console.log(output);
+    var output = Object.keys(this.state.data).map((round, round_num, array) => {
+        const output = React.createElement('ul',{className: 'round', key: round},this.createMatch(round, round_num))
         return output;
     });
  
-    const test = React.createElement('div',{className: 'bracket'},output)
-    console.log(test)
-    return test
+    const wrapped = React.createElement('div',{className: 'bracket'},output)
+    // console.log(test)
+    return wrapped
   }
 
-  createMatch(round) {
-    return Object.keys(this.state.data[round]).map((match, index, whole_round)=>{
+  createMatch(round, round_num) {
+    console.log(this.state.data[round])
+    // return Object.keys
+    return this.state.data[round].map((match, index, whole_round)=>{
           // console.log(this.state.sample[round][match])    
           // console.log(whole_round)
           // console.log(index)
@@ -51,19 +44,20 @@ class bracket extends React.Component {
           const contestant_1_name = this.state.data[round][index]['contestant_1'] 
           const popup_data = this.state.data[round][index]
 
-          if (whole_round.length - 1 === index) { 
+          if ( index === whole_round.length - 1) { 
               closing_li = (<li className="spacer">&nbsp;</li>);
             }
 
-          if (Object.keys(this.state.data[round][0]).length > 5) {
+          if (round_num < this.state.rounds -2) {
             // console.log('last')
-            contestant_2 = (
-              <li className="game game-bottom "><a href="" onClick={(event)=>{this.setPopup(event, popup_data)}}>{ contestant_2_name || " "}</a><span></span></li>);
             spacer_game = (<li className="game game-spacer">&nbsp;</li>);
+            contestant_2 = (
+              <li className="game game-bottom"><a href="" onClick={(event)=>{this.setPopup(event, popup_data)}}>{ contestant_2_name || " "}</a><span></span></li>);
+            
           }
 
             let output = (
-              <div className="match-div"key={match}>
+              <div className="match-div"key={index}>
                 <li className="spacer">&nbsp;</li>
                 <li className="game game-top"><a href="" onClick={(event)=>{this.setPopup(event, popup_data)}}>{contestant_1_name || " "}</a><span></span></li>
                 {spacer_game}
@@ -94,7 +88,7 @@ class bracket extends React.Component {
 
 
   render () {
-    // console.log(this.state.data)
+    console.log(this.props.game)
     const test = this.createRound();
     let popup;
     if (this.state.popup === true) {
