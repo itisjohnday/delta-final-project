@@ -5,47 +5,35 @@
   <% end %>
   <h3>Name: <%="#{@user.f_name} #{@user.l_name}"%></h3>
   <h3>Username: <%=@user.username%></h3>
-  <h3>Email: <%=@user.email%></h3> 
+  <h3>Email: <%=@user.email%></h3> <br>
   <%= link_to 'Edit Account Information', edit_user_registration_path, class: 'btn btn-primary' %>
-</div>
-
-<div class="container">
   <%= link_to 'Add a new pet', new_pet_path, class: 'btn btn-primary' %>
 </div>
 
 <div class="container">
   <%= form_tag user_profile_media_links_path(user_profile_id: current_user.id), enctype: 'multipart/form-data' do %>
-    
     <div class="row">
-      <% i = 0 %>
       <% @pets.each do |pet| %>
-            <tr>
-              <div class="column" style="background-color:#fff;">
-                <div id="cardWrapper">
-                  <% if pet.profile_pic != nil %>         
-                    <img src=<%= pet.profile_pic %> /> 
-                    <br>
-                    <%= check_box_tag 'pets[]', pet.id%>
-                    <%= link_to pet.name, pet_path(id: pet.id) %>
-                    <br>
-                    <div id="cardContentContainer">
-                      <h2>   <%= link_to pet.name, pet_path(id: pet.id) %> </h2>
-                      <%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
-                      <%= link_to 'Destroy', pet_path(id: pet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-                      <p> <%= pet.breed %> </p>
-                    </div>
-                  <% end %>
-                </div>
+          <div class="col-" style="background-color:#fff">
+            <div class="container">
+              <% if pet.profile_pic != nil %>         
+                <img class="align-self-center" style="height:300px" src=<%= pet.profile_pic %> />
+              <% end %>
+              <div class="container" id="cardContentContainer">
+                <p> Tag <%= check_box_tag 'pets[]', pet.id%> </p>
+                <h4> <%= link_to pet.name, pet_path(id: pet.id) %> </h4>
+                <p> <%= pet.breed %> </p>
+                <%= link_to 'Edit', edit_pet_path(id: pet.id) %> |
+                
               </div>
-            <% i += 1 %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div><b>tag you pet and select an image or video to upload</b></div>
-      <%= file_field_tag :file  %>
-      <br>
-      <%= submit_tag 'Upload file' %>
-    </div>
+            </div>
+          </div>
+      <% end %>
+  </div>
+  <div class="container">
+    <b>Tag pets, Then upload media</b>
+    <p><%= file_field_tag :file  %></p>
+    <p><%= submit_tag 'Upload file' %></p>
+  </div>
   <% end %>
 </div>
