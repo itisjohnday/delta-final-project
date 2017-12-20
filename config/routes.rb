@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get "/no_entries" => "about#no_entries"
   get "/match_frame" => "about#match_frame"
   post "/vote_reg" => "about#vote_reg"
-  get 'bracket' => 'about#bracket'
+  get '/bracket' => 'about#bracket'
+  get '/current_scores' => 'about#current_scores'
 
   post "/tournaments/:tournament_id/set_next_round" => "rounds#set_new_round"
   get "/tournaments/:id/reset" => 'tournaments#reset'
