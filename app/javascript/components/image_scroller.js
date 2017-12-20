@@ -84,7 +84,7 @@ handleButton(event, pts) {
                </div>
            </div>
 
-           <div class="col-md">
+           <div className="col-md">
              <TableDisplay/>
           </div>
 
