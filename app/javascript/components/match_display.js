@@ -49,32 +49,30 @@ class MatchDisplay extends React.Component {
     // console.log(this.props.popup_data['contestant_1_prof_pic: '])
     return (
       <div className="match">
-
-      <h4 className ="header_vote"> Click to vote on the best!  </h4> 
-        <div className="grid-container">
-          <div className="one"> 
-            <p className="puppyname1"> 
-              <strong> {this.state.contestant_1} </strong> 
-            </p> 
-            <img src={this.state.contestant_1_entry_pic} className="puppy1" alt="" /> 
-            <p className="vote1"> 
-              <strong> <a href="url" onClick={(e)=>{this.vote(e, this.state.contestant_1_entry_id)}}>vote</a> </strong> 
-            </p> 
+        <h4 className ="header_vote"> Click to vote on the best!  </h4> 
+          <div className="grid-container">
+            <div className="one"> 
+              <p className="puppyname1"> 
+                <strong> {this.state.contestant_1} </strong> 
+              </p> 
+              <img src={this.state.contestant_1_entry_pic} className="puppy1" alt="" /> 
+              <p className="vote1"> 
+                <strong> <a href="url" onClick={(e)=>{this.vote(e, this.state.contestant_1_entry_id)}}>vote</a> </strong> 
+              </p> 
+            </div>
+            <div className="two"> 
+              <strong> <p className="vs" > VS </p> </strong> 
+            </div>
+            <div className="three"> 
+              <p className="vote1"> 
+                <strong> <a href="url" onClick={(e)=>{this.vote(e, this.state.contestant_1_entry_id)}}>vote</a> </strong> 
+              </p> 
+              <img src={this.state.contestant_2_entry_pic} className="puppy2"  alt="" /> 
+              <p className="puppyname2"> 
+                <strong> {this.state.contestant_2} </strong> 
+              </p>
+            </div>
           </div>
-          <div className="two"> 
-            <strong> <p className="vs" > VS </p> </strong> 
-          </div>
-          <div className="three"> 
-            <p className="vote1"> 
-              <strong> <a href="url" onClick={(e)=>{this.vote(e, this.state.contestant_1_entry_id)}}>vote</a> </strong> 
-            </p> 
-            <img src={this.state.contestant_2_entry_pic} className="puppy2"  alt="" /> 
-            <p className="puppyname2"> 
-              <strong> {this.state.contestant_2} </strong> 
-            </p>
-          </div>
-        </div>
-
       </div>
     );
   }
