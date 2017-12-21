@@ -19,8 +19,6 @@ Rails.application.routes.draw do
   get "/tournaments/:id/reset" => 'tournaments#reset'
 
 
-  
-
   get "/find_pets" => "find_pets#index"
 
   get "/get_links" => "about#return_links"

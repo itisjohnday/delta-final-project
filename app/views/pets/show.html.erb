@@ -9,7 +9,7 @@
   <div class='row'>
     <div class='col-s'>
       <% @pet.media_links.each do |obj| %>
-        <img src= <%= obj.link %> />
+        <%= link_to image_tag(obj.link), user_profile_media_link_path(user_profile_id: obj.user_id, user_id: obj.user_id) %>
       <% end %>
     </div>
   </div>
