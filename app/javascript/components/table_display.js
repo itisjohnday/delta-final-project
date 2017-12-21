@@ -18,7 +18,7 @@ class TableDisplay extends React.Component {
 
 getScores() {
   console.log('fetching')
-fetch('http://localhost:3000/current_scores', {
+fetch(`http://localhost:3000/current_scores/${this.props.tournament_id}`, {
   headers: {
     'Content-Type': 'application/json',
   },

@@ -7,8 +7,8 @@ class ImageDisplay extends React.Component {
 
   render () {
     return (
-      <div >
-        <img className="card-img-top" src={this.props.image} />
+      <div className="">
+        <img className="card-img-top" style={{width: 80 + '%', height: 'auto', 'paddingTop': 10 +'px', 'max-height': 400 +'px'}} src={this.props.image} />
       </div>
     );
   }

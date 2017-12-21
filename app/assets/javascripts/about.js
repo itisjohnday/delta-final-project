@@ -1,0 +1,3 @@
+$(function() {
+  ReactRailsUJS.mountComponents()
+  })
