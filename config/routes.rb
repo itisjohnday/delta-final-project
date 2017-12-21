@@ -31,8 +31,11 @@ Rails.application.routes.draw do
 
   resources :pets
 
+
   resources :user_profiles do
-    resources :media_links
+    resources :media_links do
+      resources :comments
+    end
   end
 
   resources :tournaments do

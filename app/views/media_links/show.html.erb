@@ -8,7 +8,7 @@
 
       <% @links.each do |link| %>
         <td>
-          <img src=<%= link.link %> \>
+          <img class="comment-image" src=<%= link.link %> \>
         </td>
       <% end %>
       <br>
@@ -17,7 +17,7 @@
            <label for="exampleFormControlTextarea1"></label>
            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Enter comment...</textarea>
          </div>
-        <form action="/action_page.php" id="usrform">
+        <form action="comments#create" id="usrform">
           <input type="submit">
         </form>
         <br>
@@ -25,16 +25,24 @@
 
       <div class ="comment-box">
         <table class="table table-hover">
-        <% @comments.each do |com| %>
-        <tr>
-          <td>
-            <%=com %>
-          </td>
-        </tr>
-        <% end %>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @comments.each do |com| %>
+            <tr>
+              <td><%=com.username %> :</td>
+              <td>
+                <%=com.description %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
        </div>
     </div>
-
-
 
 </html>

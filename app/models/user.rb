@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :pets, dependent: :destroy
   has_many :media_links, dependent: :destroy
+  has_many :comments, through: :media_links
 end

@@ -36,6 +36,13 @@ i = 1
   i += 1
 end
 
+
+10.times do
+  Comment.create!(username: User.find(rand(2..7)).username, description: Faker::Company.bs, media_link_id: rand(1..5))
+end
+
+
+
 # tournament2 = Tournament.create(theme: 'Funniest Trick')
 # new_round2 = Round.create(tournament_id: tournament2.id, name: 'Prelim Round')
 # i = 1
