@@ -1,15 +1,16 @@
 <div class ='container'>
-  <img src=<%= @pet.profile_pic %> />
+  <img style='height:300px' src=<%= @pet.profile_pic %> />
   <h1> <%= @pet.name %> </h1>
   <p> <%= @pet.breed %> </p>
   <p> <%= link_to 'Back', pets_path, class: 'btn btn-primary' %> </p>
 </div>
 
 <div class='container'>
+  <h3> All of <%= @pet.name %>'s Photos </h3>
   <div class='row'>
     <div class='col-s'>
       <% @pet.media_links.each do |obj| %>
-        <%= link_to image_tag(obj.link), user_profile_media_link_path(user_profile_id: obj.user_id, user_id: obj.user_id) %>
+        <%= link_to image_tag(obj.link , :style=>"height:200px"), user_profile_media_link_path(user_profile_id: obj.user_id, user_id: obj.user_id) %>
       <% end %>
     </div>
   </div>

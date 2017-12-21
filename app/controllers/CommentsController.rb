@@ -6,12 +6,12 @@ before_action :comment_auth, only: [:destroy]
     @link = MediaLink.find(params[:media_link_id])
     @comment = current_user.comments.build(comment_params)
     @comment.save # returns true if save successful, false otherwise
-    redirect_to user_profile_media_link_path(@link)
+    # redirect_to user_profile_media_link_path(@link)
   end
 
   def destroy
     @comment = @link.comments.find(params[:id]).destroy
-    redirect_to user_profile_media_link_path(@link)
+    # redirect_to user_profile_media_link_path(@link)
   end
 
   private
