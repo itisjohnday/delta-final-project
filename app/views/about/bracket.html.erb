@@ -1,9 +1,6 @@
 <%= javascript_pack_tag "application" %>
 <%= stylesheet_pack_tag "application" %>
 
-
-
-
 <!-- <div class="container-fluid"> -->
   <div class="jumbotron">
     <%= react_component('bracket', props = {game: @game, auth: form_authenticity_token, seeded: @seeded_rounds}, prerender: false) %>
