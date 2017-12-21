@@ -21,7 +21,7 @@
         <% user.pets.each do |pet| %>
           <% if pet.profile_pic != nil %>
           <td
-            <img src=<%= pet.profile_pic %> />
+            <img style="height:300px" src=<%= pet.profile_pic %> />
           </td>
         <% end %>
         <% end %>
