@@ -17,9 +17,8 @@ Rails.application.routes.draw do
 
   post "/tournaments/:tournament_id/set_next_round" => "rounds#set_new_round"
   get "/tournaments/:id/reset" => 'tournaments#reset'
-
-
-  
+  get "/tournaments/:id/enter" => 'tournaments#enter'
+  post "/tournaments/:id/enter_return" => 'tournaments#enter_return'
 
   get "/find_pets" => "find_pets#index"
 
