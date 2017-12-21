@@ -38,7 +38,7 @@ end
 
 
 10.times do
-  Comment.create!(username: User.find(rand(2..7)).username, description: Faker::Company.bs, media_link_id: rand(1..5))
+  Comment.create!(username: User.find(rand(2..7)).username, description: "SO CUTE!!", media_link_id: rand(1..5))
 end
 
 

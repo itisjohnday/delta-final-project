@@ -1,33 +1,21 @@
 class CommmentsController < ApplicationController
-before_action :find_comment, only: [:create, :destroy]
-before_action :comment_auth, only: [:destroy]
 
   def create
+    puts "Comment here"
     @link = MediaLink.find(params[:media_link_id])
-    @comment = current_user.comments.build(comment_params)
-    @comment.save # returns true if save successful, false otherwise
-    # redirect_to user_profile_media_link_path(@link)
+
+    if @comment.save
+      Comment.create(username: current_user, description: "Somestuff" media_link_id: link.id)
+    end
+    redirect_to user_profile_media_links_path(@link), success: 'comment successfully added'
+    else
+      flash.now[:notice] = 'There was an error'
+      render :new
+    end
   end
 
   def destroy
-    @comment = @link.comments.find(params[:id]).destroy
-    # redirect_to user_profile_media_link_path(@link)
   end
 
-  private
-
-  def comment_params
-    params.require(:comment).permit(:username, :description, :media_link_id)
-  end
-
-  def find_comment
-    @link = MediaLink.find(params[:media_link_id])
-  end
-
-  def comment_auth
-    if current_user != @link.user
-      redirect_to(root_path)
-    end
-  end
 
 end

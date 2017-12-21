@@ -54,7 +54,7 @@ class MediaLinksController < ApplicationController
   # end
 
   def set_user
-    @user = current_user
+    @user = User.find(params[:user_id])
   end
 
   def set_comments
