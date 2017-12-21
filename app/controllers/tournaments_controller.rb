@@ -15,10 +15,12 @@ class TournamentsController < ApplicationController
 
   def create
     @tournament = Tournament.new(tournament_params)
-    
-    
-    if @tournament.save
-      redirect_to pets_path, notice: 'Tournament was successfully created.'
+    @tournament.save
+    round = Round.new(tournament_id: @tournament.id, name: 'Prelim Round')
+    round.save
+
+    if @tournament.id
+      redirect_to tournament_path(@tournament.id), notice: 'Tournament was successfully created.'
     else
       render :new
     end
@@ -63,6 +65,26 @@ class TournamentsController < ApplicationController
     end
     VoteCheck.delete_all
     redirect_to tournaments_path
+  end
+
+  def enter
+    @user = current_user
+    @pets = @user.pets
+  end
+
+  def enter_return
+    pet_id = eval(params[:entries])[:pet_id]
+    media_link_id = eval(params[:entries])[:media_link_id]
+    pets_media_link = PetsMediaLink.where(pet_id: pet_id, media_link_id: media_link_id)[0]
+    entry = Entry.new(pets_media_link_id: pets_media_link.id)
+    entry.save
+    match = Match.new(round_id: @tournament.rounds.first.id, contestant_1_entry_id: entry.id, contestant_2_entry_id: entry.id)
+
+    if match.save
+      redirect_to tournaments_path, notice: 'Entry was successfully created.'
+    else
+      redirect_to "tournaments/#{@tournament.id}/enter"
+    end
   end
 
   private
