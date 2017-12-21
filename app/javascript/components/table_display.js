@@ -18,7 +18,7 @@ class TableDisplay extends React.Component {
 
 getScores() {
   console.log('fetching')
-fetch('http://localhost:3000/current_scores', {
+fetch(`http://localhost:3000/current_scores/${this.props.tournament_id}`, {
   headers: {
     'Content-Type': 'application/json',
   },
@@ -32,7 +32,7 @@ fetch('http://localhost:3000/current_scores', {
 }
 
 componentDidMount() {
-        setInterval(this.getScores.bind(this), 10000);
+        setInterval(this.getScores.bind(this), 5000);
 }
 
  renderPet(pet, index) {

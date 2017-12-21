@@ -6,6 +6,7 @@ import soso from 'images/bad_face'
 import okok from 'images/ok_face'
 import ImageDisplay from 'image_display'
 import TableDisplay from 'table_display'
+import 'src/image_scroller.css'
 // import { Redirect, BrowserRouter as Router} from 'react-router-dom'
 
 
@@ -72,29 +73,41 @@ handleButton(event, pts) {
 
 
   render () {
+    console.log(this.props)
     let setImage;
     if (this.state.links.length > 0) {
       setImage = this.state.links[0].link;
     }
     return (
 
-      <div className="container">
+      <div className="container" id="hotornot">
          <div className="row justify-content-lg-center">
-           <div className="card" style={{width: 40 + 'em', border: 'none'}}>
-               <ImageDisplay image={setImage} />
-               <div className="row justify-content-lg-around">
-                 <img onClick={(e)=> {this.handleButton(e, 0)}} className="face" src={soso} />
-                 <img onClick={(e)=> {this.handleButton(e, 3)}} className="face" src={okok} />
-                 <img onClick={(e)=> {this.handleButton(e, 5)}} className="face" src={great} />
-               </div>
-           </div>
-
-           <div className="col-md">
-             <TableDisplay/>
+          <div className="col-sm-6" >
+            <div className="card" style={{border: 'none'}}>
+              <ImageDisplay image={setImage}/>
+              <div className="rating row card-body justify-content-center">
+                <div id="soso" className="col-sm-2">
+                  <img onClick={(e)=> {this.handleButton(e, 0)}} src={soso} />
+                  <div id="soso_text" className="tooltip">meh</div>
+                </div>
+                <div id="okok" className="col-sm-2">
+                  <img  onClick={(e)=> {this.handleButton(e, 3)}}  src={okok} />
+                  <div id="okok_text" className="tooltip">It's OK</div>
+                </div>
+                <div id="great" className="col-sm-2">
+                  <img onClick={(e)=> {this.handleButton(e, 5)}}  src={great} />
+                  <div id="great_text" className="tooltip">5 out of 5</div>
+                </div>
+              </div>
+            </div>
           </div>
+          <div className="col-sm-4" id="scores">
+             <TableDisplay tournament_id={this.props.tournament_id} />
+          </div>
+      </div>
 
 
-         </div>
+        
 
     </div>
 
@@ -104,7 +117,8 @@ handleButton(event, pts) {
 
 ImageScroller.propTypes = {
   images: PropTypes.array,
-  auth: PropTypes.string
+  auth: PropTypes.string,
+  tournament_id: PropTypes.number
 };
 
 export default ImageScroller

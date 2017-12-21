@@ -1,7 +1,35 @@
-
-
 <%= javascript_pack_tag "application" %>
 <%= stylesheet_pack_tag "application" %>
 
 
-<%= react_component('image_scroller', props = {images: @media, auth: form_authenticity_token}, prerender: false) %>
+<script type="text/javascript"> 
+  $(function() {
+  ReactRailsUJS.mountComponents()
+})
+</script>
+
+<style>
+ #offcolor {
+  z-index: 1; 
+  background-color: gray;
+  width: 100%; 
+  height: 50%; 
+  position: absolute; 
+  top: 0px;
+  }
+
+  .jumbotron {
+    padding: 0;
+    position: relative;
+    height: 50em;
+
+  }
+</style>
+<div class="jumbotron" style="">
+  <%= react_component('image_scroller', props = {images: @media, auth: form_authenticity_token, tournament_id: @tournament.id}, prerender: false) %>
+  <div id="offcolor" style="">
+  </div>
+</div>
+
+
+
