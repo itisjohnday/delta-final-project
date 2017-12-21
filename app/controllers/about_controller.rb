@@ -94,6 +94,6 @@ class AboutController < ApplicationController
   private
 
   def set_tournament
-    @tournament = Tournament.first
+    @tournament = Tournament.find(params[:id])
   end
 end
