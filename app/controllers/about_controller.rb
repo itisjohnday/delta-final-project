@@ -1,5 +1,5 @@
 class AboutController < ApplicationController
-  before_action :set_tournament
+  before_action :set_tournament, only: [:prelim, :bracket, :current_scores, :set_tournament]
   
   def index
   end
@@ -26,7 +26,7 @@ class AboutController < ApplicationController
 
   
   def prelim
-    p params
+    # p params
     output_json = []
     @tournament.rounds.first.matches.each do |match|
       if current_user
@@ -36,7 +36,7 @@ class AboutController < ApplicationController
         end
       end
     end
-    p output_json
+    # p output_json
     if output_json.length == 0
       redirect_to no_entries_path
     else
@@ -81,6 +81,7 @@ class AboutController < ApplicationController
   def current_scores
     output = []
     @tournament.rounds.first.matches.each do |match|
+      p match
       output << {
       name: match.contestant_1.pet.name,
       points: match.contestant_1.vote_count
