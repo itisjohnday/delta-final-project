@@ -13,25 +13,46 @@ class bracket extends React.Component {
       data: this.props.game,
       popup: false,
       popup_data: {},
-      token: this.props.auth
+      token: this.props.auth,
+      current: {'backgroundColor': 'lightgreen'}
     }
 
   }
 
   createRound() {
-
+    
     var output = Object.keys(this.state.data).map((round, round_num, array) => {
-        const output = React.createElement('ul',{className: 'round', key: round},this.createMatch(round, round_num))
+        let style;
+        let tag;
+        if (round_num === this.props.seeded - 2) {
+            style = this.state.current;
+            tag = <div id="round-tag">"Current Round"</div>
+          } else {
+            tag = <div>&nbsp;</div>
+          }
+
+        const output = ( 
+          <ul className='round' style={style} key={round}> 
+            {tag}
+            {this.createMatch(round, round_num)}
+            
+          </ul>
+          );
+
         return output;
     });
 
-    const wrapped = React.createElement('div',{className: 'bracket'},output)
+    const wrapped = (
+      <div className='bracket'>
+        {output}
+      </div>
+      )
     // console.log(test)
     return wrapped
   }
 
   createMatch(round, round_num) {
-    console.log(this.state.data[round])
+    // console.log(this.state.data[round])
     // return Object.keys
     return this.state.data[round].map((match, index, whole_round)=>{
           // console.log(this.state.sample[round][match])
@@ -96,7 +117,7 @@ class bracket extends React.Component {
 
 
   render () {
-    console.log(this.props.game)
+    // console.log(this.props)
     const test = this.createRound();
     let popup;
     if (this.state.popup === true) {
@@ -113,7 +134,8 @@ class bracket extends React.Component {
 
 bracket.propTypes = {
   game: PropTypes.object,
-  auth: PropTypes.string
+  auth: PropTypes.string,
+  seeded: PropTypes.number
 };
 
 export default bracket
