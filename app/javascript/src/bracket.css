@@ -70,5 +70,10 @@
     /*position: relative;*/
     text-align: center;
     /*padding: 1em;*/
+  }
 
+  #title {
+    position: relative;
+    bottom: 50px;
+    text-align: center
   }

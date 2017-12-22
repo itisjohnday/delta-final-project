@@ -3,5 +3,4 @@ class Comment < ApplicationRecord
   validates :description, presence: true
   belongs_to :media_link
 
-
 end
