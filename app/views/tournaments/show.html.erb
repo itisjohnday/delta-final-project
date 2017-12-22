@@ -23,7 +23,11 @@
   <% if current_user.id == 1 %>
     <div class='well'>
       <%= link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-primary' %>
-      <%= link_to 'Seed Next Round', "/tournaments/#{@tournament.id}/set_next_round", method: :post, class: 'btn btn-primary'  %>
+      <% if @tournament.rounds.count == 4 %>
+        <%= link_to 'view winner', "/tournaments/#{@tournament.id}/winner", class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Seed Next Round', "/tournaments/#{@tournament.id}/set_next_round", method: :post, class: 'btn btn-primary'  %>
+      <% end %>
     </div>
   <% end %>
 </div
