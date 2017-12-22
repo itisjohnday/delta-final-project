@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @user.username %></h1>
   <% if @user.profile_pic %> 
-    <img src=<%= @user.profile_pic %> />
+    <img style='height:200px' src=<%= @user.profile_pic %> />
   <% end %>
   <h4> Name: <%="#{@user.f_name} #{@user.l_name}"%></h4>
   <h4> Username: <%=@user.username%></h4>
@@ -17,7 +17,7 @@
           <div class="col-" style="background-color:#fff">
             <div class="container">
               <% if pet.profile_pic != nil %>         
-                <img class="align-self-center" style="height:300px" src=<%= pet.profile_pic %> />
+                <img class="align-self-center" style="height:150px" src=<%= pet.profile_pic %> />
                 <h4> <%= link_to pet.name, pet_path(id: pet.id) %> </h4>
                 <p> <%= pet.breed %> </p>
               <% end %>

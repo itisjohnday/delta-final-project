@@ -1,6 +1,9 @@
 <div class ='container'>
   <img style='height:300px' src=<%= @pet.profile_pic %> />
   <h1> <%= @pet.name %> </h1>
+  <% if Tournament.exists?(pet_id: @pet.id) %>
+    <%= image_tag("blue-ribbon.png", style:'max-height:25px') %>
+  <% end %>
   <p> <%= @pet.breed %> </p>
   <p> <%= link_to 'Back', pets_path, class: 'btn btn-primary' %> </p>
 </div>
