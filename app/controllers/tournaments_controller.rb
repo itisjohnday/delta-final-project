@@ -7,6 +7,15 @@ class TournamentsController < ApplicationController
   end
 
   def show
+    if @tournament.winner
+      redirect_to "/tournaments/#{@tournament.id}/winner"
+    end
+  end
+
+  def winner
+    # binding.pry
+    @tournament.update(winner: @tournament.find_winner.pet.id)
+    redirect_to "/bracket/#{@tournament.id}"
   end
 
   def new
