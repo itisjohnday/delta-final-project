@@ -77,3 +77,10 @@
     bottom: 50px;
     text-align: center
   }
+
+  #notice {
+    color: red;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+  }

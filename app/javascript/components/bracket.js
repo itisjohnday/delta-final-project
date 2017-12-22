@@ -16,7 +16,8 @@ class bracket extends React.Component {
       popup_data: {},
       token: this.props.auth,
       current: {'backgroundColor': 'lightgreen'},
-      winner: this.props.winner
+      winner: this.props.winner,
+      notice: null
     }
 
   }
@@ -28,7 +29,7 @@ class bracket extends React.Component {
         let tag;
         if (round_num === this.props.seeded - 2) {
             style = this.state.current;
-            tag = <div id="round-tag">"Current Round"</div>
+            tag = <div id="round-tag">Current Round</div>
           } else {
             tag = <div>&nbsp;</div>
           }
@@ -139,13 +140,19 @@ class bracket extends React.Component {
     // console.log(this.props)
     const test = this.createRound();
     let popup;
+    let notice;
+    if (this.state.notice) {
+      notice = <h3 id="notice">{this.state.notice}</h3>
+      setTimeout(()=>{this.setState({notice: null})}, 5000)
+    }
     if (this.state.popup === true) {
-      popup = <MatchDisplay popup_state={()=>{this.setState({popup: !this.state.popup})}} popup_data={this.state.popup_data} auth_token={this.state.token}/>
+      popup = <MatchDisplay popup_state={()=>{this.setState({popup: !this.state.popup})}} popup_data={this.state.popup_data} auth_token={this.state.token} set_notice={(message)=>this.setState({notice: message})}/>
     }
 
     let title = (<h2 id="title"> {this.props.theme} </h2>)
     return (
         <div>
+          {notice}
           {title}
           {test}
           {popup}
