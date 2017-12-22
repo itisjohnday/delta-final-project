@@ -55,7 +55,7 @@
 }
 
 #soso #soso_text:before {
-  content:'meh'; /* Must have content to display */
+  content:''; /* Must have content to display */
     
 }
 #soso:hover #soso_text {
@@ -64,7 +64,7 @@
 }
 
 #okok #okok_text:before {
-  content:'Its OK'; /* Must have content to display */
+  content:''; /* Must have content to display */
     
 }
 #okok:hover #okok_text {
@@ -73,7 +73,7 @@
 }
 
 #great #great_text:before {
-  content:'5 out 5'; /* Must have content to display */
+  content:''; /* Must have content to display */
     
 }
 #great:hover #great_text {
