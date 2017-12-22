@@ -1,31 +1,18 @@
-<div class='container'>
-<h1>Learn more about dog breeds:</h1>
-<div class="dropdown show">
-  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Breed
-  </a>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <%@breeds.each do |breed|%>
-      <a class="dropdown-item" target="_blank" href="http://www.akc.org/dog-breeds/<%=breed.downcase.gsub(" ", "-")%>" ><%=breed%></a>
-    <%end%>
+<div class='jumbotron' style='padding:20px; background-color:white'>
+  <div class='container' style='padding:20px'>
+    <h1>Learn more about dog breeds on AKC.org:</h1>
+    <div class="dropdown show">
+      <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Breed</a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <%@breeds.each do |breed|%>
+          <a class="dropdown-item" target="_blank" href="http://www.akc.org/dog-breeds/<%=breed.downcase.gsub(" ", "-")%>" ><%=breed%></a>
+        <%end%>
+      </div>
+    </div>
+  </div>
+
+  <div class='container' style='padding:20px'>
+    <h1>Search for an adoptable pet on PetFinder.com:</h1>
+    <a class="btn btn-primary" target='_blank' href="https://www.petfinder.com/pet-adoption/">Go</a>
   </div>
 </div>
-
-<!-- <div>
-  <h1>Search for an adoptable dog near you:</h1>
-  <section class="search-form">
-    <form action="">
-      <p class="inp-wrap cat-wrap">
-        <label for="categories" class="grid-20">Breed</label>
-        <select name="breed" id="breed" class="grid-80">
-          <%@breeds.each do |breed|%>
-          <option value=<%="#{breed}"%>><%= breed %></option>
-          <%end%>
-        </select>
-      </p>
-      <p class="inp-wrap submit-wrap">
-        <button class="grid-100 btn">Search</button>
-      </p>
-    </form>
-  </section> 
-</div>
- -->

@@ -1,56 +1,26 @@
-<html lang="en">
-  <head>
-    <style>
+<style>
+  h3 {
+    font: 100 100px/1.5 'Pacifico', Helvetica, sans-serif;
+    color: #2b2b2b; font-weight: bold;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+  }
 
-      .header-overlay{
-        height:100vh;
-        width:100vw;
-        position:absolute;
-        top:0;
-        left:0;
-        background:#504A4B;
-        z-index:1;
-        opacity:0.05; 
-      }
+  h4 {
+    font: 100 40px/1.5 'Pacifico', Helvetica, sans-serif;
+    color: #2b2b2b; font-weight: normal;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+  }
+</style>
+  
+<div class="fullscreen-video-wrap center" style="align:center; z-index: -1">
+  <%= video_tag "doggy_resize.mp4",  :controls => false, :autoplay => true, :loop => true %>
+</div>
 
-      .btn{
-        background: #C0C0C0;
-        color: #000000;
-        font-size:1.2 rem;
-        padding: 1rem 5rem;
-        text-decoration: none;
-      }
+<div class='container'>
+  <div>
+    <h3 style="color:#95B9C7; align:center">TournaPets</h3><br>
+    <%= link_to 'Get Started', pets_path, class: 'btn' %><br><br>
+    <h4 style="color:#FDEEF4;"> Vote For Your Favorite Pets!!</br>  </h4>
+  </div>
+</div>
 
-      h3 {
-        font: 100 100px/1.5 'Pacifico', Helvetica, sans-serif;
-        color: #2b2b2b; font-weight: bold;
-        text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
-      }
-
-
-      h4 {
-        font: 100 40px/1.5 'Pacifico', Helvetica, sans-serif;
-        color: #2b2b2b; font-weight: normal;
-        text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
-      }
-
-      body {
-        background-color: black
-      }
-    </style>
-  </head>
-  <body>
-    <header class="v-header container">
-      <div class="fullscreen-video-wrap center">
-        <%= video_tag "doggy_resize.mp4",  :controls => false, :autoplay => true, :loop => true %>
-      </div>
-
-      <div class="header-overlay"></div>
-      <div class="header-content">
-        <h3 style="color:#95B9C7;">TournaPets</h3><br>
-        <%= link_to 'Start', pets_path, class: 'btn' %>
-        <h4 style="color:#FDEEF4;"> All your Instagram followers know your dog is extremely talented and cute. It's time to test that out!</br>  </h4>
-      </div>
-    </header>
-  </body>
-</html>
