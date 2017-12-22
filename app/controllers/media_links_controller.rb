@@ -1,6 +1,6 @@
 class MediaLinksController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_user, only: [:show]
+  before_action :set_user
   before_action :set_comments, only: [:show]
 
   def index
@@ -8,7 +8,7 @@ class MediaLinksController < ApplicationController
   end
 
   def show
-    @links = MediaLink.where(user_id: @user.id)
+    @link = MediaLink.find(params[:id])
   end
 
   def new
@@ -51,7 +51,7 @@ class MediaLinksController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:user_profile_id])
   end
 
   def set_comments

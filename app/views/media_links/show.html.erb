@@ -1,26 +1,23 @@
-<html>
 
+<div class="container">
     <head>
       <%= stylesheet_link_tag "media_links" %>
     </head>
 
     <div class="img-with-text">
 
-      <% @links.each do |link| %>
+    
         <td>
-          <img class="comment-image" src=<%= link.link %> \>
+          <img class="comment-image" style="height:300px" src=<%= @link.link %> \>
         </td>
-      <% end %>
+
       <br>
       <div class ="enter-comment">
 
-        <%= form_tag user_profile_media_link_comments_path(user_id: current_user.id, media_link_id: @links.ids[0]) do%>
+        <%= form_tag user_profile_media_link_comments_path(user_profile_id: current_user.id, media_link_id: @link.id) do%>
         <%=text_area_tag :description, nil, placeholder: "Comment here.." %>
         <p><%= submit_tag "Create Comment" %></p>
         <% end %>
-
-
-
         <br>
 
 
@@ -35,7 +32,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @comments.each do |com| %>
+            <% @comments.reverse_order.each do |com| %>
             <tr>
               <td><%=com.username %> :</td>
               <td>
@@ -47,5 +44,4 @@
         </table>
        </div>
     </div>
-
-</html>
+</div>
