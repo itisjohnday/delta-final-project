@@ -14,10 +14,12 @@
       <br>
       <div class ="enter-comment">
 
-        <form method="post" action=<%=user_profile_media_link_comments_path(user_id: current_user.id, media_link_id: @links.ids[0])%>>
-          <input placeholder="Comment here.." name="description" />
-          <input type="submit" value="Create Comment"/>
-        </form>
+        <%= form_tag user_profile_media_link_comments_path(user_id: current_user.id, media_link_id: @links.ids[0]) do%>
+        <%=text_area_tag :description, nil, placeholder: "Comment here.." %>
+        <p><%= submit_tag "Create Comment" %></p>
+        <% end %>
+
+
 
         <br>
 
