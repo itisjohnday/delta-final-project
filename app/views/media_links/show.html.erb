@@ -13,14 +13,15 @@
       <% end %>
       <br>
       <div class ="enter-comment">
-        <div class="form-group">
-           <label for="exampleFormControlTextarea1"></label>
-           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Enter comment...</textarea>
-         </div>
-        <form action="#" id="usrform">
-          <input type="submit">
+
+        <form method="post" action=<%=user_profile_media_link_comments_path(user_id: current_user.id, media_link_id: @links.ids[0])%>>
+          <input placeholder="Comment here.." name="description" />
+          <input type="submit" value="Create Comment"/>
         </form>
+
         <br>
+
+
       </div>
 
       <div class ="comment-box">
