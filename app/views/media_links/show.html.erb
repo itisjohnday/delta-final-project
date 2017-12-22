@@ -1,9 +1,48 @@
-<table>
-  <tr> 
-<% @links.each do |link| %>
-  <td>
-    <img src=<%= link.link %> \>
-  </td>
-<% end %>
-</tr>
-</table>
+<html>
+
+    <head>
+      <%= stylesheet_link_tag "media_links" %>
+    </head>
+
+    <div class="img-with-text">
+
+      <% @links.each do |link| %>
+        <td>
+          <img class="comment-image" src=<%= link.link %> \>
+        </td>
+      <% end %>
+      <br>
+      <div class ="enter-comment">
+        <div class="form-group">
+           <label for="exampleFormControlTextarea1"></label>
+           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Enter comment...</textarea>
+         </div>
+        <form action="#" id="usrform">
+          <input type="submit">
+        </form>
+        <br>
+      </div>
+
+      <div class ="comment-box">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @comments.each do |com| %>
+            <tr>
+              <td><%=com.username %> :</td>
+              <td>
+                <%=com.description %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+       </div>
+    </div>
+
+</html>

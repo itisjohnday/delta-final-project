@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get 'bracket/:id' => 'about#bracket'
   get '/current_scores/:id' => 'about#current_scores'
 
-  
 
   post "/tournaments/:tournament_id/set_next_round" => "rounds#set_new_round"
   get "/tournaments/:id/reset" => 'tournaments#reset'
@@ -33,8 +32,11 @@ Rails.application.routes.draw do
 
   resources :pets
 
+
   resources :user_profiles do
-    resources :media_links
+    resources :media_links do
+      resources :comments
+    end
   end
 
   resources :tournaments do
