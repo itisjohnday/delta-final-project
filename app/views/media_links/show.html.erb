@@ -13,14 +13,17 @@
       <% end %>
       <br>
       <div class ="enter-comment">
-        <div class="form-group">
-           <label for="exampleFormControlTextarea1"></label>
-           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Enter comment...</textarea>
-         </div>
-        <form action="#" id="usrform">
-          <input type="submit">
-        </form>
+
+        <%= form_tag user_profile_media_link_comments_path(user_id: current_user.id, media_link_id: @links.ids[0]) do%>
+        <%=text_area_tag :description, nil, placeholder: "Comment here.." %>
+        <p><%= submit_tag "Create Comment" %></p>
+        <% end %>
+
+
+
         <br>
+
+
       </div>
 
       <div class ="comment-box">
