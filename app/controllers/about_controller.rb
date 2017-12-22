@@ -45,13 +45,14 @@ class AboutController < ApplicationController
   end
 
   def vote_reg
-    p params
-    entry = Entry.where(id: params[:entry])[0]
+    entry = Entry.find_or_create_by(id: params[:entry])
+    # binding.pry
+    if VoteCheck.exists?(user_id: current_user.id, match_id: entry.match.id)
+      return render json: {error: "you can only vote once in each match"}
+    end
+    vote = VoteCheck.create(user_id: current_user.id, match_id: entry.match.id)
     entry.vote_count += params[:vote]
     entry.save
-    vote = VoteCheck.find_or_create_by(user_id: current_user.id, match_id: entry.match.id)
-    # binding.pry
-    p vote
     render body: nil
   end
 

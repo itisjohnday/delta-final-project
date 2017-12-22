@@ -1,36 +1,28 @@
-<!-- <form action='/pet' class="form-inline" method="post">
-      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden" >
-      <input type='text' name='name' placeholder='name' />
-      <input type='text' name='breed' placeholder='breed' />
-      <input type='submit' value='submit' />
-</form>
- -->
-
-<div>
+<div class='container'>
   <%= form_for @tournament do |f| %>
     <% if @tournament.errors.any? %>
-    <fieldset>
-        <div id="error_explanation">
-          <h2><%= pluralize(@tournament.errors.count, "error") %> prohibited this tournament from being saved:</h2>
-
-          <ul>
-          <% @tournament.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
+      <fieldset>
+          <div id="error_explanation">
+            <h2><%= pluralize(@tournament.errors.count, "error") %> prohibited this tournament from being saved:</h2>
+            <ul>
+            <% @tournament.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class='container'>
+          <div class='form-group'>
+            <%= f.label :theme, class: 'col-lg-2' %>
+            <div class='col-lg-10'>
+              <%= f.text_field :theme, class: 'form-control', required: true %>
+            </div>
+          </div>
         </div>
-      <% end %>
 
-      <div class='form-group'>
-        <%= f.label :theme, class: 'col-lg-2' %>
-        <div class='col-lg-10'>
-          <%= f.text_field :theme, class: 'form-control', required: true %>
+        <div class="actions">
+          <%= f.submit %>
         </div>
-      </div>
-
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    <fieldset>
+      <fieldset>
   <% end %>
 </div>

@@ -21,7 +21,7 @@ class MatchDisplay extends React.Component {
   }
 
   sendResult(entry_id, pts) {
-  // console.log(JSON.stringify({entry: this.state.links[0].entry_id, vote: pts}))
+
   fetch('http://localhost:3000/vote_reg', {
     method: 'POST',
     credentials: 'include',
@@ -31,9 +31,18 @@ class MatchDisplay extends React.Component {
     },
     body: JSON.stringify({entry: entry_id, vote: pts})
   }).then((response) => {
-    console.log(response);
-  })
+    if (!response.ok) { throw response }
+    return response.json();
+  }).then((json)=>{this.notice(json)
+  }).catch( err =>{console.log(err)})
 
+  }
+
+
+  notice(message) {
+    if (message['error']) {
+      this.props.set_notice(message['error'])
+    }
   }
 
   vote(event, entry_id){
@@ -46,7 +55,6 @@ class MatchDisplay extends React.Component {
 
   render () {
 
-    // console.log(this.props.popup_data['contestant_1_prof_pic: '])
     return (
       <div className="match">
         <h4 className ="header_vote"> Click to vote on the best!  

@@ -32,7 +32,8 @@ fetch(`http://localhost:3000/current_scores/${this.props.tournament_id}`, {
 }
 
 componentDidMount() {
-        setInterval(this.getScores.bind(this), 5000);
+        var timer = setInterval(this.getScores.bind(this), 5000);
+        // console.log(timer);
 }
 
  renderPet(pet, index) {
