@@ -1,9 +1,9 @@
 .match {
   position: fixed;
   width: 40%;
-  height: 45%;
-  top: 80px;
-  right: 30px;
+  height: 550px;
+  top: 25%;
+  right: 25%;
   background: white;
   z-index: 500;
   overflow: hidden;
@@ -17,6 +17,7 @@
   border: 2px solid #708090;
   width: 150px;
   height: 150px;
+  text-align: center;
 }
 
 .puppy2 {
@@ -33,18 +34,18 @@
   text-align: center;
 }
 
-.grid-container {
+/*.grid-container {
   width: 20%;
   grid-template-columns: repeat(3, 1fr);
 
   display: inline-grid;
   grid-column-gap: 40px;
-  grid-row-gap: 20px;
+  grid-row-gap: 20px;*/
   /* padding: 50px; */
   /* padding-left: 3cm; */
-}
-
-.one {
+/*}
+*/
+/*.one {
   grid-column: 1;
   grid-row: 1;
   text-align: center;
@@ -74,3 +75,4 @@
 .header_vote {
   text-align: center;
 }
+*/

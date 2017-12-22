@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from "prop-types"
 import 'src/bracket'
 import MatchDisplay from 'match_display'
+import {Link} from 'react-router-dom'
 
 
 class bracket extends React.Component {
@@ -96,7 +97,7 @@ class bracket extends React.Component {
           } else {
             console.log('this ran')
             contestant_1 = (
-              <li className="game game-top"><a href="/pet" onClick={(event)=>{window.location.href = `/pets/${this.state.winner}`}}>{ contestant_1_name || " "}</a><span></span></li>
+              <li className="game game-top"><a href="" onClick={(event)=>{window.location.href = `/pets/${this.state.winner}`}}>{ contestant_1_name || " "}</a><span></span></li>
               );
           }
 
@@ -116,10 +117,6 @@ class bracket extends React.Component {
   }
 
   populateBracket() {
-
-  }
-
-  getWinners() {
 
   }
 
@@ -145,8 +142,11 @@ class bracket extends React.Component {
     if (this.state.popup === true) {
       popup = <MatchDisplay popup_state={()=>{this.setState({popup: !this.state.popup})}} popup_data={this.state.popup_data} auth_token={this.state.token}/>
     }
+
+    let title = (<h2 id="title"> {this.props.theme} </h2>)
     return (
         <div>
+          {title}
           {test}
           {popup}
         </div>
@@ -158,7 +158,8 @@ bracket.propTypes = {
   game: PropTypes.object,
   auth: PropTypes.string,
   seeded: PropTypes.number,
-  winner: PropTypes.number
+  winner: PropTypes.number,
+  theme: PropTypes.string
 };
 
 export default bracket

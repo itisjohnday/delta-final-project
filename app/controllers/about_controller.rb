@@ -56,19 +56,16 @@ class AboutController < ApplicationController
   end
 
   def bracket
-    # @tournament = Tournament.first
     rounds = 4
     init_seeding = [0,3,1,2]
     
     current_tournament = CreateBracket.new(@tournament, rounds, init_seeding)
     current_tournament.seed
     @seeded_rounds = current_tournament.seeded_rounds
-    # p @seeded_rounds
     @game = current_tournament.game
     if @tournament.winner
       winner_props = Pet.find(@tournament.winner)
       @game["round_#{rounds}"] = [{contestant_1: winner_props.name, contestant_1_prof_pic: winner_props.profile_pic}]
-      # @winner = true
       @winner = @tournament.winner
       p "winner"
     else
