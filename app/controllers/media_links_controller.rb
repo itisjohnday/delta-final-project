@@ -1,6 +1,7 @@
 class MediaLinksController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  # before_action :set_user
+  before_action :set_user, only: [:show]
+  before_action :set_comments
 
   def index
     # @links = MediaLink.where(user_id: @user.id)
@@ -17,10 +18,8 @@ class MediaLinksController < ApplicationController
   end
 
   def create
-    
-    binding.pry
     # Make an object in your bucket for your upload
-    # obj = .objects[params[:file].original_filename] 
+    # obj = .objects[params[:file].original_filename]
     filename = current_user.username + rand(100000000..999999999).to_s + params[:file].original_filename
     # Upload the file
     obj = DELTA_BUCKET.object(filename)
@@ -50,11 +49,15 @@ class MediaLinksController < ApplicationController
   end
 
   private
-  # def pet_params  
+  # def pet_params
   #   params['pet'].permit(:name, :breed)
   # end
 
-  # def set_user
-  #   @user = User.find(params[:user_id])
-  # end
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  def set_comments
+    @comments = Comment.where(media_link_id: @user.id)
+  end
 end

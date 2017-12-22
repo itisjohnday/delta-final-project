@@ -17,12 +17,17 @@
         <% i += 1 %>
         <br/>
       <% end %>
-      <h5>   <%= link_to 'Back to All Tournaments', tournaments_path %> </h5>
+      <h5>   <%= link_to 'Back to All Tournaments', tournaments_path, class: 'btn btn-primary' %> </h5>
     </div>
   </div>
-  <div class='well'>
-    <%= link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-primary' %> |
-    <%= link_to 'Back', tournaments_path, class: 'btn btn-primary'  %> |
-    <%= link_to 'Seed Next Round', "/tournaments/#{@tournament.id}/set_next_round", method: :post, class: 'btn btn-primary'  %>
-  </div>
+  <% if current_user.id == 1 %>
+    <div class='well'>
+      <%= link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-primary' %>
+      <% if @tournament.rounds.count == 4 %>
+        <%= link_to 'view winner', "/tournaments/#{@tournament.id}/winner", class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Seed Next Round', "/tournaments/#{@tournament.id}/set_next_round", method: :post, class: 'btn btn-primary'  %>
+      <% end %>
+    </div>
+  <% end %>
 </div

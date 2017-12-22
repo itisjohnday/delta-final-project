@@ -1,4 +1,5 @@
  .bracket{
+  margin: 0% 5%;
   z-index: 1;
   display:flex;
   flex-direction:row;
@@ -7,18 +8,22 @@
   font-size:1em;
   padding:10px;
   line-height:2em;
+
   
 }
  .round{
+  flex: 1;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  width:200px;
+  /*width:200px;*/
   list-style:none;
   padding:0;
+  overflow: auto;
+
 }
 
- .match-div {
+ .match-div{
   flex: 1 0 auto;
   display:flex;
   flex-direction:column;
@@ -46,7 +51,10 @@
     margin-right:5px;
   }
 
-   li.game-top{ border-bottom:1px solid #aaa; }
+   li.game-top{ 
+    border-bottom:1px solid #aaa;
+    min-height:20px; 
+   }
 
    li.game-spacer{ 
     border-right:1px solid #aaa;
@@ -55,4 +63,17 @@
 
    li.game-bottom{ 
     border-top:1px solid #aaa;
+    min-height:20px;
+  }
+
+  #round-tag {
+    /*position: relative;*/
+    text-align: center;
+    /*padding: 1em;*/
+  }
+
+  #title {
+    position: relative;
+    bottom: 50px;
+    text-align: center
   }

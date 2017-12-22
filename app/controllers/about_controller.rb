@@ -1,5 +1,5 @@
 class AboutController < ApplicationController
-  # protect_from_forgery only: [:vote_reg], with: :null_session
+  before_action :set_tournament, only: [:prelim, :bracket, :current_scores, :set_tournament]
   
   def index
   end
@@ -8,13 +8,15 @@ class AboutController < ApplicationController
   end
 
   def search
-    @pets = Pet.where(name: params['search'])
-    @users = User.where(username: params['search'])
+    @pets = Pet.where("lower(name) = ? OR lower(breed) = ?", params[:search].downcase, params[:search].downcase)
+    @users = User.where("lower(username) = ? OR lower(f_name) = ? OR lower(l_name) = ?", params[:search].downcase, params[:search].downcase, params[:search].downcase)
   end
-
+  
+  #preliminary round pictures api
   def return_links
     output_json = []
     Match.all.each do |current_match|
+      # binding.pry
       if VoteCheck.exists?(user_id: current_user.id, match_id: current_match.id)  == false
         output_json.push({link: current_match.find_link, entry_id: current_match.contestant_1.id})
       end
@@ -22,86 +24,83 @@ class AboutController < ApplicationController
     render json:output_json
   end
 
+  
   def prelim
+    # p params
     output_json = []
-    Match.all.each do |current_match|
+    @tournament.rounds.first.matches.each do |match|
       if current_user
-        if VoteCheck.exists?(user_id: current_user.id, match_id: current_match.id)  == false
-          output_json.push({link: current_match.find_link, entry_id: current_match.contestant_1.id})
-        else
-          #redirect_to no_entries_path
+        if VoteCheck.exists?(user_id: current_user.id, match_id: match.id) == false
+          # binding.pry
+          output_json.push({link: match.find_link, entry_id: match.contestant_1.id})
         end
       end
     end
-    @media = output_json
+    # p output_json
+    if output_json.length == 0
+      redirect_to no_entries_path
+    else
+      @media = output_json
+    end
+  end
+
+  def vote_reg
+    p params
+    entry = Entry.where(id: params[:entry])[0]
+    entry.vote_count += params[:vote]
+    entry.save
+    vote = VoteCheck.find_or_create_by(user_id: current_user.id, match_id: entry.match.id)
+    # binding.pry
+    p vote
+    render body: nil
   end
 
   def bracket
-    p Tournament.all
-    @tournament = Tournament.first
-    last_round = @tournament.rounds.count
-    @game = {}
-    round = {}
     rounds = 4
     init_seeding = [0,3,1,2]
-    @tournament.rounds.each_with_index do |round, index|
-      if index == 1
-        matches = []
-        round_one = @tournament.rounds.where(name: round.name)[0].matches
-        init_seeding.each do |index2|
-          matches << ({contestant_1: round_one[index2].contestant_1.pet.name, contestant_1_prof_pic: round_one[index2].contestant_1.pet.profile_pic, contestant_1_entry_id: round_one[index2].contestant_1.id, contestant_1_entry_pic: round_one[index2].contestant_1.media_link.link,
-            contestant_2: round_one[index2].contestant_2.pet.name, contestant_2_prof_pic: round_one[index2].contestant_2.pet.profile_pic, contestant_2_entry_id: round_one[index2].contestant_2.id, contestant_2_entry_pic: round_one[index2].contestant_2.media_link.link,})
-        end
-        @game["round_#{index}"] = matches
-      elsif index > 1 
-        matches = @tournament.rounds.where(name: round.name)[0].matches.map.with_index{|match, index2|
-          {contestant_1: match.contestant_1.pet.name, contestant_1_prof_pic: match.contestant_1.pet.profile_pic, contestant_1_entry_id: match.contestant_1.id, contestant_1_entry_pic: match.contestant_1.media_link.link, contestant_2: match.contestant_2.pet.name, contestant_2_prof_pic: match.contestant_2.pet.profile_pic, contestant_2_entry_id: match.contestant_2.id, contestant_2_entry_pic: match.contestant_2.media_link.link}
-          }
-        @game["round_#{index}"] = matches
-      elsif index == rounds
-        @game["round_#{index}"] = [{contestant_1: nil, contestant_1_prof_pic: nil}]
-      end
-      if index < rounds
-        (index + 1 .. rounds).each do |val|
-          matches = []
-          (rounds-val).times do
-            matches << ({contestant_1: nil, contestant_1_prof_pic: nil, contestant_1_entry_id: nil, contestant_1_entry_pic: nil,contestant_2: nil, contestant_2_prof_pic: nil, contestant_2_entry_id: nil, contestant_2_entry_pic: nil
-            })
-          end
-          if rounds == val
-            matches << ({contestant_1: @tournament.winner.pet.name, contestant_1_prof_pic: @tournament.winner.pet.profile_pic})
-          end
-
-          @game["round_#{val}"] = matches
-        end
-      end
+    
+    current_tournament = CreateBracket.new(@tournament, rounds, init_seeding)
+    current_tournament.seed
+    @seeded_rounds = current_tournament.seeded_rounds
+    @game = current_tournament.game
+    if @tournament.winner
+      winner_props = Pet.find(@tournament.winner)
+      @game["round_#{rounds}"] = [{contestant_1: winner_props.name, contestant_1_prof_pic: winner_props.profile_pic}]
+      @winner = @tournament.winner
+      p "winner"
+    else
+      @winner = nil
+      current_tournament.fill_empty
     end
-    p 'testing'
-
-  
+    @seeded_rounds
   end
 
   def dummyjson
     render json: [{link: "hahhaha", key: "1"}]
   end
 
-  def vote_reg
-    entry = Entry.where(params[id: :entry])[0]
-    entry.vote_count += params[:vote]
-    entry.save
-    VoteCheck.create(user_id: current_user.id, match_id: entry.match.id)
-    render body: nil
-  end
-
-  def pics
-    if output_json.length == 0
-      redirect_to no_entries_path
-    end
-  end
+  
 
   def no_entries
   end
 
+  def current_scores
+    output = []
+    @tournament.rounds.first.matches.each do |match|
+      p match
+      output << {
+      name: match.contestant_1.pet.name,
+      points: match.contestant_1.vote_count
+      }
+    end
+    #need to sort output by points 
+    render json: output
+  end
+
    
   private
+
+  def set_tournament
+    @tournament = Tournament.find(params[:id])
+  end
 end

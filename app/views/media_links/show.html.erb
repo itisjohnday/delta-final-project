@@ -1,9 +1,51 @@
-<table>
-  <tr> 
-<% @links.each do |link| %>
-  <td>
-    <img src=<%= link.link %> \>
-  </td>
-<% end %>
-</tr>
-</table>
+<html>
+
+    <head>
+      <%= stylesheet_link_tag "media_links" %>
+    </head>
+
+    <div class="img-with-text">
+
+      <% @links.each do |link| %>
+        <td>
+          <img class="comment-image" src=<%= link.link %> \>
+        </td>
+      <% end %>
+      <br>
+      <div class ="enter-comment">
+
+        <%= form_tag user_profile_media_link_comments_path(user_id: current_user.id, media_link_id: @links.ids[0]) do%>
+        <%=text_area_tag :description, nil, placeholder: "Comment here.." %>
+        <p><%= submit_tag "Create Comment" %></p>
+        <% end %>
+
+
+
+        <br>
+
+
+      </div>
+
+      <div class ="comment-box">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @comments.each do |com| %>
+            <tr>
+              <td><%=com.username %> :</td>
+              <td>
+                <%=com.description %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+       </div>
+    </div>
+
+</html>

@@ -12,10 +12,10 @@ class RoundsController < ApplicationController
         prelim_matches_order = @tournament.rounds.last.matches.to_a.sort_by! {|match| match.contestant_1.vote_count}
         prelim_matches_order = prelim_matches_order.reverse
         @round = Round.create(tournament_id: @tournament.id, name: 'Elite 8')
-        @match1 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[0].contestant_1.id, contestant_2_entry_id: prelim_matches_order[7].contestant_1.id)
-        @match2 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[1].contestant_1.id, contestant_2_entry_id: prelim_matches_order[6].contestant_1.id)
-        @match3 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[2].contestant_1.id, contestant_2_entry_id: prelim_matches_order[5].contestant_1.id)
-        @match4 = Match.create(round_id: @round.id, contestant_1_entry_id: prelim_matches_order[3].contestant_1.id, contestant_2_entry_id: prelim_matches_order[4].contestant_1.id)
+        @match1 = Match.create(round_id: @round.id, contestant_1_entry_id: Entry.create(pets_media_link_id:prelim_matches_order[0].contestant_1.pets_media_link.id).id, contestant_2_entry_id: Entry.create(pets_media_link_id: prelim_matches_order[7].contestant_1.pets_media_link.id).id)
+        @match2 = Match.create(round_id: @round.id, contestant_1_entry_id: Entry.create(pets_media_link_id:prelim_matches_order[1].contestant_1.pets_media_link.id).id, contestant_2_entry_id: Entry.create(pets_media_link_id:prelim_matches_order[6].contestant_1.pets_media_link.id).id)
+        @match3 = Match.create(round_id: @round.id, contestant_1_entry_id: Entry.create(pets_media_link_id:prelim_matches_order[2].contestant_1.pets_media_link.id).id, contestant_2_entry_id: Entry.create(pets_media_link_id: prelim_matches_order[5].contestant_1.pets_media_link.id).id)
+        @match4 = Match.create(round_id: @round.id, contestant_1_entry_id: Entry.create(pets_media_link_id:prelim_matches_order[3].contestant_1.pets_media_link.id).id, contestant_2_entry_id: Entry.create(pets_media_link_id: prelim_matches_order[4].contestant_1.pets_media_link.id).id)
       when 2
         @match1 = @tournament.rounds.second.matches.first
         @match2 = @tournament.rounds.second.matches.second
@@ -42,8 +42,8 @@ class RoundsController < ApplicationController
         else
           match_4_winner = @match4.contestant_2
         end
-        @match5 = Match.create(round_id: @round.id, contestant_1_entry_id: match_1_winner.id, contestant_2_entry_id: match_4_winner.id)
-        @match6 = Match.create(round_id: @round.id, contestant_1_entry_id: match_2_winner.id, contestant_2_entry_id: match_3_winner.id)
+        @match5 = Match.create(round_id: @round.id, contestant_1_entry_id: Entry.create(pets_media_link_id:match_1_winner.pets_media_link.id).id, contestant_2_entry_id: Entry.create(pets_media_link_id: match_4_winner.pets_media_link.id).id)
+        @match6 = Match.create(round_id: @round.id, contestant_1_entry_id: Entry.create(pets_media_link_id:match_2_winner.pets_media_link.id).id, contestant_2_entry_id: Entry.create(pets_media_link_id: match_3_winner.pets_media_link.id).id)
       when 3
         @match5 = @tournament.rounds.third.matches.first
         @match6 = @tournament.rounds.third.matches.second
@@ -58,7 +58,7 @@ class RoundsController < ApplicationController
         else
           match_6_winner = @match6.contestant_2
         end
-        @match7 = Match.create(round_id: @round.id, contestant_1_entry_id: match_5_winner.id, contestant_2_entry_id: match_6_winner.id)
+        @match7 = Match.create(round_id: @round.id, contestant_1_entry_id: Entry.create(pets_media_link_id:match_5_winner.pets_media_link.id).id, contestant_2_entry_id: Entry.create(pets_media_link_id: match_6_winner.pets_media_link.id).id)
     end
     
     if @round.save

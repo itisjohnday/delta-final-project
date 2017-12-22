@@ -1,3 +1,4 @@
+admin = User.create(f_name: '', l_name: '', username: 'admin', email:'admin@tournapets.com', password: 'tournapets')
 paris = User.create(f_name: 'Paris', l_name: 'Hilton', username: 'philton', email:'paris@tournapets.com', password: 'tournapets')
 deja = User.create(f_name: 'Deja', l_name: 'Baker', username: 'dbaker', email:'deja@tournapets.com', password: 'tournapets')
 tim = User.create(f_name: 'Tim', l_name: 'Cook', username: 'tcook', email:'tim@tournapets.com', password: 'tournapets')
@@ -34,6 +35,13 @@ i = 1
   new_match = Match.create(round_id: new_round.id, contestant_1_entry_id: new_entry.id, contestant_2_entry_id: new_entry.id)
   i += 1
 end
+
+
+10.times do
+  Comment.create!(username: User.find(rand(2..7)).username, description: "SO CUTE!!", media_link_id: rand(1..5))
+end
+
+
 
 # tournament2 = Tournament.create(theme: 'Funniest Trick')
 # new_round2 = Round.create(tournament_id: tournament2.id, name: 'Prelim Round')

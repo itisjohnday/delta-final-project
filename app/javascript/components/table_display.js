@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from 'react-dom'
 import PropTypes from "prop-types"
+import 'src/score_board'
 
 
 class TableDisplay extends React.Component {
@@ -9,10 +10,30 @@ class TableDisplay extends React.Component {
    super(props)
    this.state = {
    // array with names and points
-    petArray: [ {name:"Billy" ,points: 90} , {name:"John", points:50} ,{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Dej", points: 200},{name: "Da", points: 200}, {name: "D", points: 200}, {name: "Deja", points: 200}, {name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200}]
+    petArray: [ {name:"Billy" ,points: 90} , {name:"John", points:50} ,{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Dej", points: 200},{name: "Da", points: 200}, {name: "D", points: 200}, {name: "Deja", points: 200}, {name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200},{name: "Deja", points: 200}],
+    petArrayReal: []
 
    }
  }
+
+getScores() {
+  console.log('fetching')
+fetch(`http://localhost:3000/current_scores/${this.props.tournament_id}`, {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  method: 'get'
+}).then((response) => {
+  return response.json();
+}).then((json) => {
+  this.setState({petArrayReal: json})
+  console.log(json)
+})
+}
+
+componentDidMount() {
+        setInterval(this.getScores.bind(this), 5000);
+}
 
  renderPet(pet, index) {
    return (
@@ -25,10 +46,12 @@ class TableDisplay extends React.Component {
 
 
   render () {
+
+    // setTimeout(this.getScores, 3000);
     return (
       <div className="table_display" >
 
-        <table striped condensed hover>
+        <table className="striped condensed hover">
           <thead>
             <tr>
               <th>Pet Name</th>
@@ -36,7 +59,7 @@ class TableDisplay extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.petArray.map(this.renderPet)}
+            {this.state.petArrayReal.map(this.renderPet)}
           </tbody>
         </table>
 

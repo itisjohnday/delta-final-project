@@ -1,64 +1,35 @@
-
-
 <%= javascript_pack_tag "application" %>
+<%= stylesheet_pack_tag "application" %>
 
+
+<script type="text/javascript"> 
+  $(function() {
+  ReactRailsUJS.mountComponents()
+})
+</script>
 
 <style>
-button, .face {
-  box-shadow: 0 7px 9px #999;
-  border-radius: 50%;
-}
-.face:active {
-  box-shadow: 0 3px 5px #666;
-  transform: translateY(4px);
-}
+ #offcolor {
+  z-index: 1; 
+  background-color: gray;
+  width: 100%; 
+  height: 50%; 
+  position: absolute; 
+  top: 0px;
+  }
 
-.pet_table {
-   float:left;
-}
+  .jumbotron {
+    padding: 0;
+    position: relative;
+    height: 50em;
 
-th, td {
-    padding: 15px;
-    text-align: left;
-}
-
-tr:hover {
-  background-color: #f5f5f5;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-tbody {
-    height: 40%;
-}
-
-
-tr:nth-child(even) {background-color: #f2f2f2;}
-
-th {
-    background-color: #708090;
-    color: white;
-}
-
-
-tbody {
-    display:block;
-    height:370px;
-    overflow:auto;
-}
-thead, tbody tr {
-    display:table;
-    width:100%;
-    table-layout:fixed;/* even columns width , fix width of table too*/
-}
-
-table {
-    width:400px;
-}
-
-
+  }
 </style>
+<div class="jumbotron" style="">
+  <%= react_component('image_scroller', props = {images: @media, auth: form_authenticity_token, tournament_id: @tournament.id}, prerender: false) %>
+  <div id="offcolor" style="">
+  </div>
+</div>
 
-<%= react_component('image_scroller', props = {images: @media, auth: form_authenticity_token}, prerender: false) %>
+
+

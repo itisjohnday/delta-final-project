@@ -12,7 +12,7 @@ class MatchDisplay extends React.Component {
       contestant_1: this.props.popup_data['contestant_1'],
       contestant_1_entry_id: this.props.popup_data['contestant_1_entry_id'],
       contestant_1_entry_pic: this.props.popup_data['contestant_1_entry_pic'],
-      contestant_1_prof_pic: this.props.popup_data['contestant_1_prof_pic'],      
+      contestant_1_prof_pic: this.props.popup_data['contestant_1_prof_pic'],
       contestant_2: this.props.popup_data['contestant_2'],
       contestant_2_entry_id: this.props.popup_data['contestant_2_entry_id'],
       contestant_2_entry_pic: this.props.popup_data['contestant_2_entry_pic'],
@@ -41,38 +41,51 @@ class MatchDisplay extends React.Component {
     // console.log(this.props.auth_token)
     this.sendResult(entry_id, 1)
     this.props.popup_state()
-    
+
   }
 
   render () {
-    
+
     // console.log(this.props.popup_data['contestant_1_prof_pic: '])
     return (
       <div className="match">
-        <h4 className ="header_vote"> Click to vote on the best!  </h4> 
-          <div className="grid-container">
-            <div className="one"> 
-              <p className="puppyname1"> 
-                <strong> {this.state.contestant_1} </strong> 
-              </p> 
-              <img src={this.state.contestant_1_entry_pic} className="puppy1" alt="" /> 
-              <p className="vote1"> 
-                <strong> <a href="url" onClick={(e)=>{this.vote(e, this.state.contestant_1_entry_id)}}>vote</a> </strong> 
-              </p> 
+        <h4 className ="header_vote"> Click to vote on the best!  
+        </h4>
+          <div className="container-fluid">
+
+            <div className="row justify-content-start">
+              <div className="col-4">
+                <div className="row justify-content-center">
+                    <strong> {this.state.contestant_1} </strong>
+                </div>
+                <div className="row justify-content-center">
+                  <img className="puppy2" src={this.state.contestant_1_entry_pic} alt="" />
+                </div>
+                <strong> <a className="row justify-content-center" href="url" onClick={(e)=>{this.vote(e, this.state.contestant_1_entry_id)}}>vote</a> 
+                </strong>
+              </div>
             </div>
-            <div className="two"> 
-              <strong> <p className="vs" > VS </p> </strong> 
+
+            <div className="row justify-content-center">
+              <div className="col-2">
+                <strong> <p className="vs" > VS </p> </strong>
+              </div>
             </div>
-            <div className="three"> 
-              <p className="vote1"> 
-                <strong> <a href="url" onClick={(e)=>{this.vote(e, this.state.contestant_1_entry_id)}}>vote</a> </strong> 
-              </p> 
-              <img src={this.state.contestant_2_entry_pic} className="puppy2"  alt="" /> 
-              <p className="puppyname2"> 
-                <strong> {this.state.contestant_2} </strong> 
-              </p>
+
+            <div className="row justify-content-end">
+              <div className="col-4">
+                <div className="row justify-content-center">
+                    <strong> {this.state.contestant_2} </strong>
+                </div>
+                <div className="row justify-content-center">
+                  <img className="puppy2" src={this.state.contestant_2_entry_pic} alt="" />
+                </div>
+                <strong> <a className="row justify-content-center" href="url" onClick={(e)=>{this.vote(e, this.state.contestant_2_entry_id)}}>vote</a> 
+                </strong>
+              </div>
             </div>
-          </div>
+
+         </div>
       </div>
     );
   }
