@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import PropTypes from "prop-types"
 import 'src/bracket'
 import MatchDisplay from 'match_display'
-import {Link} from 'react-router-dom'
 
 
 class bracket extends React.Component {

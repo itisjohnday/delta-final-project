@@ -28,6 +28,7 @@ example_id                                                 | status  | run_time 
 ./spec/helpers/media_links_helper_spec.rb[1:1]             | pending | 0.00002 seconds |
 ./spec/helpers/pets_helper_spec.rb[1:1]                    | pending | 0.00015 seconds |
 ./spec/helpers/user_profiles_helper_spec.rb[1:1]           | pending | 0.00003 seconds |
+./spec/models/comment_spec.rb[1:1]                         | unknown |                 |
 ./spec/models/media_link_spec.rb[1:1]                      | pending | 0.00001 seconds |
 ./spec/models/pet_spec.rb[1:1]                             | pending | 0.00001 seconds |
 ./spec/models/pets_media_link_spec.rb[1:1]                 | pending | 0.00002 seconds |
