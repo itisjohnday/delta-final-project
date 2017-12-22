@@ -11,6 +11,7 @@
 </div>
 
 <div class="container">
+  
   <%= form_tag user_profile_media_links_path(user_profile_id: current_user.id), enctype: 'multipart/form-data' do %>
     <div class="row">
       <% @pets.each do |pet| %>
