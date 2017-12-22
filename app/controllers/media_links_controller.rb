@@ -55,6 +55,6 @@ class MediaLinksController < ApplicationController
   end
 
   def set_comments
-    # @comments = Comment.where(media_link_id: @user.id)
+    @comments = Comment.where(media_link_id: @user.id)
   end
 end
