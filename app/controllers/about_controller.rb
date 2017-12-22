@@ -8,8 +8,8 @@ class AboutController < ApplicationController
   end
 
   def search
-    @pets = Pet.where(name: params['search'])
-    @users = User.where(username: params['search'])
+    @pets = Pet.where("lower(name) = ? OR lower(breed) = ?", params[:search].downcase, params[:search].downcase)
+    @users = User.where("lower(username) = ? OR lower(f_name) = ? OR lower(l_name) = ?", params[:search].downcase, params[:search].downcase, params[:search].downcase)
   end
   
   #preliminary round pictures api
@@ -59,14 +59,23 @@ class AboutController < ApplicationController
     # @tournament = Tournament.first
     rounds = 4
     init_seeding = [0,3,1,2]
-      
+    
     current_tournament = CreateBracket.new(@tournament, rounds, init_seeding)
     current_tournament.seed
-    
-    if current_tournament.seeded_rounds < rounds 
+    @seeded_rounds = current_tournament.seeded_rounds
+    # p @seeded_rounds
+    @game = current_tournament.game
+    if @tournament.winner
+      winner_props = Pet.find(@tournament.winner)
+      @game["round_#{rounds}"] = [{contestant_1: winner_props.name, contestant_1_prof_pic: winner_props.profile_pic}]
+      # @winner = true
+      @winner = @tournament.winner
+      p "winner"
+    else
+      @winner = nil
       current_tournament.fill_empty
     end
-    @game = current_tournament.game
+    @seeded_rounds
   end
 
   def dummyjson

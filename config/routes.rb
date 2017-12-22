@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "/tournaments/:id/reset" => 'tournaments#reset'
   get "/tournaments/:id/enter" => 'tournaments#enter'
   post "/tournaments/:id/enter_return" => 'tournaments#enter_return'
+  get '/tournaments/:id/winner' => 'tournaments#winner'
 
   get "/find_pets" => "find_pets#index"
 

@@ -19,6 +19,7 @@
   /*width:200px;*/
   list-style:none;
   padding:0;
+  overflow: auto;
 
 }
 
@@ -63,4 +64,11 @@
    li.game-bottom{ 
     border-top:1px solid #aaa;
     min-height:20px;
+  }
+
+  #round-tag {
+    /*position: relative;*/
+    text-align: center;
+    /*padding: 1em;*/
+
   }

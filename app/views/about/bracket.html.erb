@@ -3,6 +3,6 @@
 
 <!-- <div class="container-fluid"> -->
   <div class="jumbotron">
-    <%= react_component('bracket', props = {game: @game, auth: form_authenticity_token}, prerender: false) %>
+    <%= react_component('bracket', props = {game: @game, auth: form_authenticity_token, seeded: @seeded_rounds, winner: @winner}, prerender: false) %>
   </div>
 <!-- <div> -->

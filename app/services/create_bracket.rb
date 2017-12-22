@@ -26,12 +26,12 @@ class CreateBracket
         @game["round_#{index}"] = matches
       end
       #remove in real game
-      if index == @rounds - 1
-        @game["round_#{index+1}"] = [{contestant_1: @tournament.winner.pet.name, contestant_1_prof_pic: @tournament.winner.pet.profile_pic}]
-      end
+      # if index == @rounds - 1
+      #   @game["round_#{index+1}"] = [{contestant_1: @tournament.winner.pet.name, contestant_1_prof_pic: @tournament.winner.pet.profile_pic}]
+      # end
       @seeded_rounds += 1
     end
-
+   
   end
 
   def fill_empty
