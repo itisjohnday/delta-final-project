@@ -62,8 +62,8 @@ test:
 
 production:
   <<: *default
-  source_path: app
-  public_output_path: /public/packs
+  source_path: app/
+  public_output_path: public/packs
   # Production depends on precompilation of packs prior to booting for performance.
   compile: false
 
