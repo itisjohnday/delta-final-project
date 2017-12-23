@@ -62,9 +62,10 @@ test:
 
 production:
   <<: *default
-  public_output_path: ../public/packs
+  source_path: app/
+  public_output_path: /public/packs
   # Production depends on precompilation of packs prior to booting for performance.
-  compile: true
+  compile: false
 
   # Cache manifest.json for performance
-  cache_manifest: true
+  cache_manifest: false
