@@ -1,0 +1,128 @@
+/* line 1, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* line 5, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* line 14, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.v-header {
+  height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+}
+
+/* line 21, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.container {
+  max-width: 960px;
+  padding-left: 1rem;
+  padding-righ: 1rem;
+  margin: auto;
+  text-align: center;
+}
+
+/* line 29, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.fullscreen-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* line 38, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.fullscreen-video-wrap video {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* line 43, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.header-overlay {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #D3D3D3;
+  z-index: 1;
+  opacity: 0.10;
+}
+
+/* line 54, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.header-content {
+  z-index: 2;
+}
+
+/* line 58, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.header-content h1 {
+  font-size: 50px;
+  margin-bottom: 0;
+}
+
+/* line 63, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.header-content p {
+  font-size: 1.5rem;
+  display: block;
+  padding-bottom: 2rem;
+}
+
+/* line 69, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.btn {
+  background: #C0C0C0;
+  color: #000000;
+  font-size: 1.2 rem;
+  padding: 1rem 2rem;
+  text-decoration: none;
+}
+
+/* line 77, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+.section {
+  padding: 0px;
+  background: #333;
+  color: #fff;
+}
+
+@media (max-width: 960px) {
+  /* line 84, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/about.scss */
+  .container {
+    padding-right: 3rem;
+    position-left: 3rem;
+  }
+}
+/* line 20, /Users/lobsterhead/Desktop/codeplatoon/delta-final-project/app/assets/stylesheets/media_links.scss */
+tbody {
+  display: block;
+  height: 180px;
+  overflow: auto;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
