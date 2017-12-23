@@ -26,7 +26,7 @@ add_links(array_links) {
 }
 
 getMore() {
-fetch('http://localhost:3000/get_links', {
+fetch('/get_links', {
   headers: {
     'Content-Type': 'application/json',
   },
@@ -44,7 +44,7 @@ noMore() {
 
 sendResult(pts) {
   // console.log(JSON.stringify({entry: this.state.links[0].entry_id, vote: pts}))
-  fetch('http://localhost:3000/vote_reg', {
+  fetch('/vote_reg', {
     method: 'POST',
     credentials: 'include',
     headers: {

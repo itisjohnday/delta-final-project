@@ -22,7 +22,7 @@ class MatchDisplay extends React.Component {
 
   sendResult(entry_id, pts) {
 
-  fetch('http://localhost:3000/vote_reg', {
+  fetch('/vote_reg', {
     method: 'POST',
     credentials: 'include',
     headers: {
