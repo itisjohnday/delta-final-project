@@ -1,10 +1,16 @@
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
 default: &default
-  source_path: app/javascript
-  source_entry_path: packs
-  public_output_path: packs
-  cache_path: tmp/cache/webpacker
+  # source_path: app/javascript
+  # source_entry_path: packs
+  # public_output_path: packs
+  # cache_path: tmp/cache/webpacker
+  paths:
+    src_path: app/javascript
+    config_path: config/webpack
+    node_modules_path: node_modules
+    dist_dir: packs
+    dist_path: public/packs
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
@@ -62,10 +68,8 @@ test:
 
 production:
   <<: *default
-  source_path: app/
-  public_output_path: public/packs
   # Production depends on precompilation of packs prior to booting for performance.
-  compile: false
+  compile: true
 
   # Cache manifest.json for performance
   cache_manifest: false
