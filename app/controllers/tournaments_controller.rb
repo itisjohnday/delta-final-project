@@ -71,6 +71,7 @@ class TournamentsController < ApplicationController
           match.contestant_2.update(vote_count: 0)
         end
       end
+    @tournament.update(winner: nil)
     end
     VoteCheck.delete_all
     redirect_to tournaments_path

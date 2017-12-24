@@ -21,5 +21,5 @@
 // require bootstrap-sprockets
 
 // require components
-//= require react
-//= require react_ujs
+// require react
+// require react_ujs
